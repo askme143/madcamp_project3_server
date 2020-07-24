@@ -1,3 +1,4 @@
+const debug = require('debug')('bin')
 const server = require('./app');
 const hostname = '0.0.0.0'
 const port = 80;
