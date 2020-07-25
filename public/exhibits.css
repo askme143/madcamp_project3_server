@@ -1,3 +1,7 @@
+@font-face { font-family: 'BBTreeGB'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'BBTreeGR'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'BBTreeGL'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGL.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 * {
     margin:0;
     padding:0;
@@ -32,7 +36,7 @@ a {
 
 /* header */
 header {
-    background:#eeeeee;
+    background:#444444;
     width:100%;
     height:70px;
     position: relative;
@@ -49,7 +53,7 @@ header {
 
 /* navigation */
 nav {
-    font-size:1.1rem;
+    font-size:1.2rem;
 }
 .gnb li {
     display:inline-block;
@@ -58,10 +62,12 @@ nav {
     display:none;
 }
 .gnb li>a:hover {
-    color:#ff5e00;
+    color:#eeeeee;
 }
 .gnb li>a, .user_info li a {
-    display:black;
+    display:block;
+    font-family: 'BBTreeGL';
+    color:#c2c2c2;
     height:70px;
     line-height:70px;
     padding:0 16px;
@@ -74,21 +80,32 @@ nav {
 }
 .user_info li a {
     padding:0 5px;
-    font-size:0.9rem;
+    font-size:1rem;
 }
 
 /* Content */
-.exhibition_area {
+#content {
     max-width: 1170px;
+    margin:0 auto;
+
+    padding: 50px 0 0 0;
+
+    display:flex;
+    flex-flow:row-reverse nowrap;
+}
+/* Exhibition area */
+.exhibition_area {
+    width: 85%;
     margin:0 auto;
 }
 
-/* h1 */
+/* exhibition h1 */
 .exhibition_area > h1 {
-    padding: 50px 0 0 0;
+    font-size:2rem;
+    padding: 10px 0 0 0;
 }
 
-/* content bar */
+/* exhibition bar */
 .exhibition_bar {
     display:flex;
     flex-flow: row wrap;
@@ -97,7 +114,14 @@ nav {
 
     height:40px;
     margin: 20px 0;
-    background: #eeeeee;
+    
+    border-style: solid;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-color:#eeeeee;
+    border-bottom-color: #eeeeee;
 }
 .exhibition_bar ul {
     height: 20px;
@@ -115,25 +139,24 @@ nav {
     padding:0 8px;
 }
 
-/* Content list */
+/* exhibition list */
 .exhibition_list {
     display:flex;
     flex-flow:column wrap;
     align-items: center;
 }
-.exhibition_list hr {
-    width: 100%;
-    border-style: solid;
-    color:#eeeeee;
-}
 
 .list_group {
     display:flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
+    justify-content: center;
 
     width:100%;
-    flex-basis:100%;
-    margin: 20px 0 20px 0;
+}
+.list_group::after{
+    content:' ';
+    width: 95%;
+    border-bottom: 1px solid #eeeeee;
 }
 
 .list_item {
@@ -141,8 +164,8 @@ nav {
 
     width:45%;
     flex-grow:1;
-    padding: 20px;
-    margin: 0 20px 0 0;
+    padding: 2%;
+    margin: 1% 1% 1% 0;
 
     display:flex;
 }
@@ -150,26 +173,43 @@ nav {
     box-shadow: 0 4px 8px 0 rgba(100, 100, 100, 0.2),
                 0 6px 20px 0 rgba(100, 100, 100, 0.19);
 }
+.img_box {
+    width:40%;
+    box-sizing:border-box;
+}
+.item_box {
+    width:50%;
+    margin:0 0 0 10%;
+}
 .img_box img {
     resize:both;
-    width:auto;
+    width:100%;
     height:auto;
-    max-width:210px;
-    max-height:300px;
-}
-.item_list {
-    margin:0 20px;
+    max-width:174px;
+    max-height:250px;
+    object-fit: cover;
+    border:1px solid #eeeeee;
 }
 .blind {
     height:0;
     width:0;
-    visibility: hidden;
+    visibility: collapse;
+    display:none;
 }
 .item_list dd {
     margin: 10px 0;
 }
+.item_list .title a {
+    font-style: normal;
+    font-size: 1.1rem;
+    font-weight: 900;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
-/* Content navigation */
+/* exhibition navigation */
 .exhibition_nav {
     display:flex;
     flex-flow: row wrap;
@@ -191,8 +231,8 @@ nav {
     color:#ff5e00;
 }
 .exhibition_nav a.selected {
-    color: #0073e9;
-    border: 1px solid #0073e9;
+    color: #ff5e00;
+    border: 1px solid #ff5e00;
 }
 .exhibition_nav .icon {
     background:url(pngs/ico_paging.png);
@@ -216,4 +256,16 @@ nav {
 }
 .exhibition_nav .icon.next-page-dimmed {
     background-position: -34px -68px;
+}
+
+/* Filter */
+.filter {
+    width:15%;
+    margin: 0 20px;
+    padding:20px;
+    background-color: #eeeeee;
+    box-sizing: border-box;
+}
+.filter h3 {
+    font-family: 'BBTreeGL';
 }

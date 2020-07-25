@@ -37,9 +37,8 @@ const getExhibits = (req, res, next) => {
 
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
-        res.send({"total_page":totalPage,
+        res.send({"total_page":totalPage, "exhibits_per_page": exhibitsPerPage,
                     "exhibits" : documents.slice(skip, end)});
-        console.log(totalPage);
     })
 }
 

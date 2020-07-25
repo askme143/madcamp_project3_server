@@ -4,19 +4,26 @@ var periodList = document.querySelectorAll(".period");
 var placeList = document.querySelectorAll(".place");
 var feeList = document.querySelectorAll(".fee");
 
+var listGroupList = document.querySelectorAll('.list_group');
+
 var currentPage = 1;
 var totalPage;
+var exhibitsPerPage;
 
 const pagePerNav = 10;
 
 /* Caller: nextPage() and at beginning */
 function requestExhibitsTotal(page) {
     $.getJSON("/exhibits/total?page=" + String(page), (data) => {
-        const {total_page, exhibits} = data;
+        const {total_page, exhibits_per_page, exhibits} = data;
         const len = exhibits.length;
 
         for (var i = 0; i < len; i++) {
             const exhibit = exhibits[i];
+            
+            if (i % 2 == 0 && listGroupList[i/2].getAttribute('class') == "blind") {
+                listGroupList[i/2].setAttribute('class', "list_group");
+            }
 
             var finishDate;
             if (exhibit.finish_d == 0) {
@@ -39,8 +46,13 @@ function requestExhibitsTotal(page) {
             placeList[i].innerHTML = exhibit.place;
             feeList[i].innerHTML = exhibit.fee;
         }
+        for (var i = len; i < exhibits_per_page; i++) {
+            if (i % 2 == 0)
+                listGroupList[i/2].setAttribute('class', "blind");
+        }
 
         totalPage = total_page;
+        exhibitsPerPage = exhibits_per_page;
     })
 }
 function appendZero(number) {
