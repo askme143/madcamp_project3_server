@@ -119,13 +119,21 @@ nav {
 .exhibition_list {
     display:flex;
     flex-flow:column wrap;
+    align-items: center;
+}
+.exhibition_list hr {
+    width: 100%;
+    border-style: solid;
+    color:#eeeeee;
 }
 
 .list_group {
     display:flex;
-
     flex-flow: row nowrap;
-    margin-bottom: 40px;
+
+    width:100%;
+    flex-basis:100%;
+    margin: 20px 0 20px 0;
 }
 
 .list_item {
@@ -133,13 +141,14 @@ nav {
 
     width:45%;
     flex-grow:1;
+    padding: 20px;
     margin: 0 20px 0 0;
 
     display:flex;
 }
 .list_item:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(100, 100, 100, 0.2),
+                0 6px 20px 0 rgba(100, 100, 100, 0.19);
 }
 .img_box img {
     resize:both;
@@ -166,6 +175,8 @@ nav {
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+
+    margin: 20px 0;
 
     width: 100%;
     height: 50px;
