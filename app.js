@@ -6,18 +6,26 @@ const app = express();
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
+/* My modules(apis) */
+const apiDB = require('./api/db');
+const apiExhibits = require('./api/exhibits');
+
 /* Put functions in the middleware */
 /* logger */
 app.use(logger('dev'));
+
+/* server-static */
+app.use(express.static('./public'))
 
 /* Body parser */
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-/* server-static */
-app.use(express.static('./public'))
+/* DB Upload */
+app.post('/exhibits/upload', apiDB.putExhibits);
 
-/* Get images */
+/* Exhibits page */
+app.get('/exhibits/total', apiExhibits.getExhibits);
+
 debug('> App initiated')
-
 module.exports = app;
