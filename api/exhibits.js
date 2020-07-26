@@ -22,9 +22,42 @@ const getExhibits = (req, res, next) => {
     console.log ("> Get exhibits");
 
     const page = req.query.page;
+    var dateFrom = req.query.date_from;
+    var dateTo = req.query.date_to;
+    var district = req.query.district;
+
     const exhibitsCollection = db.db('prj3').collection("exhibits");
 
-    const result = exhibitsCollection.find()
+    var query = {}
+    
+    if (district.length > 0) {
+        query['district'] = district;
+    }
+    if (dateFrom.length > 0) {
+        query['start_num'] = {"$lte":parseInt(dateFrom)};
+        query['finish_num'] = {"$gte":parseInt(dateFrom)};
+    }
+    if (dateTo.length > 0) {
+        query['start_num'] = {"$lte":parseInt(dateTo)};
+        query['finish_num'] = {"$gte":parseInt(dateTo)};
+    }
+    if (dateFrom.length > 0 && dateTo.length > 0) {
+        var fromNum = parseInt(dateFrom);
+        var toNum = parseInt(dateTo);
+
+        if (fromNum > toNum) {
+            const temp = fromNum;
+            fromNum = toNum;
+            toNum = temp;
+        }
+
+        query['start_num'] = {"$lte":fromNum};
+        query['finish_num'] = {"$gte":toNum};
+    }
+
+    console.log(query);
+
+    const result = exhibitsCollection.find(query);
     
     result.toArray((error, documents) => {
         if (error) throw error;

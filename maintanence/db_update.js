@@ -20,6 +20,30 @@ function updateExhibitsImage(db) {
         }
     });
 }
+function updateDateNum(db) {
+    const exhibitsCollection = db.db('prj3').collection('exhibits');
+
+    const result = exhibitsCollection.find();
+
+    result.toArray((error, documents) => {
+        console.log(error);
+
+        const len = documents.length;
+        for (var i = 0; i < len ; i++) {
+            const startY = documents[i].start_y;
+            const startM = documents[i].start_m;
+            const startD = documents[i].start_d;
+
+            const finishY = documents[i].finish_y;
+            const finishM = documents[i].finish_m;
+            const finishD = documents[i].finish_d;
+
+            exhibitsCollection.updateOne({"_id":documents[i]._id},
+                {$set: {"start_num":startY * 10000 + startM * 100 + startD,
+                        "finish_num":finishY * 10000 + finishM * 100 + finishD}});
+        }
+    });
+}
 
 var mongoClient = require('mongodb').MongoClient;
 

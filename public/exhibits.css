@@ -150,6 +150,7 @@ nav {
     display:flex;
     flex-flow: row wrap;
     justify-content: center;
+    align-items: center;
 
     width:100%;
 }
@@ -160,8 +161,6 @@ nav {
 }
 
 .list_item {
-    display:inline-block;
-
     width:45%;
     flex-grow:1;
     padding: 2%;
@@ -172,6 +171,17 @@ nav {
 .list_item:hover {
     box-shadow: 0 4px 8px 0 rgba(100, 100, 100, 0.2),
                 0 6px 20px 0 rgba(100, 100, 100, 0.19);
+}
+.blind_item {
+    display:inline-block;
+
+    width:45%;
+    flex-grow:1;
+    padding: 2%;
+    margin: 1% 1% 1% 0;
+
+    display:flex;
+    visibility: hidden;
 }
 .img_box {
     width:40%;
@@ -261,18 +271,18 @@ nav {
 /* Filter */
 .filter_area {
     width: 15%;
-    height: 400px;
+    height: 440px;
     margin: 20px;
     padding: 20px;
     background-color: #eeeeee;
     box-sizing: border-box;
 }
-.filter_area h3 {
-    margin: 0 0 10px -5%;
-    font-family: 'BBTreeGL';
-}
 .filter_area > div:not(:first-child) {
     margin-top: 20px;
+}
+.filter_title {   
+    margin: 0 0 20px -5%;
+    font-family: 'BBTreeGL';
 }
 
 /* District filter */
@@ -288,8 +298,14 @@ nav {
 .date_filter .input_box {
     width:100%;
 
-    margin-top: 15px;
     text-align: center;
+}
+
+.date_filter .filter_body{
+    display:flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .input_txt {
@@ -317,4 +333,11 @@ nav {
     font-size:0;
     background: url(pngs/calendar.png);
     background-position: -2px -73px;
+}
+
+.apply_btn {
+    height:30px;
+    line-height: 30px;
+    text-align:center;
+    width:70%;
 }

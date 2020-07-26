@@ -4,24 +4,34 @@ var periodList = document.querySelectorAll(".period");
 var placeList = document.querySelectorAll(".place");
 var feeList = document.querySelectorAll(".fee");
 
+var listItemList = document.querySelectorAll('.list_item');
 var listGroupList = document.querySelectorAll('.list_group');
 
 var currentPage = 1;
+var district = "";
+var dateFrom = "";
+var dateTo = "";
+
 var totalPage;
 var exhibitsPerPage;
 
 const pagePerNav = 10;
 
 function requestExhibitsTotal(page) {
-    $.getJSON("/exhibits/total?page=" + String(page), (data) => {
+    $.getJSON("/exhibits/total?page=" + String(page)
+                + "&district=" + district
+                + "&date_from=" + dateFrom
+                + "&date_to=" + dateTo, (data) => {
         const {total_page, exhibits_per_page, exhibits} = data;
         const len = exhibits.length;
 
         for (var i = 0; i < len; i++) {
             const exhibit = exhibits[i];
             
-            if (i % 2 == 0 && listGroupList[i/2].getAttribute('class') == "blind") {
-                listGroupList[i/2].setAttribute('class', "list_group");
+            if (listItemList[i].getAttribute('class') == "blind_item") {
+                listItemList[i].setAttribute('class', "list_item");
+                if (i % 2 == 0)
+                    listGroupList[i/2].setAttribute('class', "list_group");
             }
 
             var finishDate;
@@ -46,12 +56,15 @@ function requestExhibitsTotal(page) {
             feeList[i].innerHTML = exhibit.fee;
         }
         for (var i = len; i < exhibits_per_page; i++) {
+            listItemList[i].setAttribute('class', "blind_item");
             if (i % 2 == 0)
                 listGroupList[i/2].setAttribute('class', "blind");
         }
 
         totalPage = total_page;
         exhibitsPerPage = exhibits_per_page;
+
+        showNav(page);
     })
 }
 function appendZero(number) {
@@ -110,10 +123,17 @@ function showNav(page) {
 
 function showFilter() {
     const inputBoxList = document.querySelectorAll('.input_txt');
+    const districtList = document.querySelectorAll('.district_list a');
+    const applyBtn = document.querySelector('.apply_btn');
 
     for (var i = 0; i < 2; i++) {
-        inputBoxList[i].addEventListener('input', dateInputListener);
+        inputBoxList[i].addEventListener('input', onInputDate);
     }
+    for (var i = 0; i < districtList.length; i++) {
+        districtList[i].addEventListener('click', onClickDistrict);
+    }
+
+    applyBtn.addEventListener('click', onClickApply);
 }
 
 /* Event listeners */
@@ -121,11 +141,48 @@ const onClickNavButton = (ev) => {
     const target = ev.target;
     const newPage = parseInt(target.getAttribute('data-page'));
 
+    flushDate();
+
     requestExhibitsTotal (newPage);
     showNav (newPage);
     page = newPage;
 }
-const dateInputListener = (ev) => {
+const onClickDistrict = (ev) => {
+    district = ev.target.getAttribute('data-district');
+
+    flushDate();
+
+    requestExhibitsTotal (1);
+    showNav (1);
+    page = 1;
+}
+const onClickApply = (ev) => {
+    const strFrom = document.querySelector('#date_from').value;
+    const strTo = document.querySelector('#date_to').value;
+    var from = strFrom.replace(/[^0-9]/g, '').substring(0, 8);
+    var to = strTo.replace(/[^0-9]/g, '').substring(0, 8);
+    
+    if (from.length > 0 && from.length < 8
+         || to.length > 0 && to.length < 8) {
+        /* handle invalid input */
+        return;
+    }
+
+    if (parseInt(from) > parseInt(to)) {
+        const temp = from;
+        from = to;
+        to = temp;
+
+        document.querySelector('#date_from').value = strTo;
+        document.querySelector('#date_to').value = strFrom;
+    }
+
+    dateFrom = from;
+    dateTo = to;
+
+    requestExhibitsTotal(1);
+}
+const onInputDate = (ev) => {
     var str = ev.target.value.replace(/[^0-9]/g, '').substring(0, 8);
     console.log(str);
 
@@ -156,6 +213,12 @@ const dateInputListener = (ev) => {
     ev.target.value = str;
 }
 
+/* helpers */
+function flushDate() {
+    document.querySelector('#date_from').value = "";
+    document.querySelector('#date_to').value = "";
+    dateFrom = "";
+    dateTo = "";
+}
 requestExhibitsTotal(1);
-showNav(1);
 showFilter();

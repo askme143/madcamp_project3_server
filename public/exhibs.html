@@ -257,30 +257,34 @@
             <section class="filter_area">
                 <div class="district_filter">
                     <h3 class="filter_title">지역</h3>
-                    <ul class="district_list">
-                        <li><a href="#">서울</a></li>
-                        <li><a href="#">경기</a></li>
-                        <li><a href="#">부산</a></li>
-                        <li><a href="#">다른 지역</a></li>
-                    </ul>
+                    <div class="filter_body">
+                        <ul class="district_list">
+                            <li><a data-district="" href="#">모든 지역</a></li>
+                            <li><a data-district="서울" href="#">서울</a></li>
+                            <li><a data-district="경기" href="#">경기</a></li>
+                            <li><a data-district="부산" href="#">부산</a></li>
+                            <li><a data-district="다른지역" href="#">다른 지역</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="date_filter">
                     <h3 class="filter_title">날짜</h3>
-                    <div class="input_box">
-                        <input type="text" title="검색기간 시작일" value="" class="input_txt" id="date_from">
-                        <a href="#" class="calendar" onclick="return tCR('a=fno.datecalenderopen');">
-                            달력 레이어 호출
-                        </a>
-                    </div>
-                    <div class="input_box">
-                        <input type="text" title="검색기간 종료일" value="" class="input_txt" id="date_to">
-                        <a href="#" class="calendar" onclick="return tCR('a=fno.datecalenderopen');">
-                            달력 레이어 호출
-                        </a>
+                    <div class="filter_body">
+                        <div class="input_box">
+                            <input type="text" title="검색기간 시작일" value="" class="input_txt" id="date_from">
+                            <a href="#" class="calendar" onclick="return tCR('a=fno.datecalenderopen');">
+                                달력 레이어 호출
+                            </a>
+                        </div>
+                        <div class="input_box">
+                            <input type="text" title="검색기간 종료일" value="" class="input_txt" id="date_to">
+                            <a href="#" class="calendar" onclick="return tCR('a=fno.datecalenderopen');">
+                                달력 레이어 호출
+                            </a>
+                        </div>
+                        <a class="apply_btn"href="#">적용하기</a>
                     </div>
                 </div>
-
-                <a href="#">적용하기</a>
             </section>
         </div>
         <script type="text/javascript" src="javascripts/exhibits.js"></script>
