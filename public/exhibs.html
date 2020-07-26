@@ -254,16 +254,33 @@
             </section>
 
             <!-- Filter -->
-            <section class="filter">
-                <div>
-                    <h3>지역</h3>
-                    <ul>
-                        <li>><a href="#">a</a></li>
+            <section class="filter_area">
+                <div class="district_filter">
+                    <h3 class="filter_title">지역</h3>
+                    <ul class="district_list">
+                        <li><a href="#">서울</a></li>
+                        <li><a href="#">경기</a></li>
+                        <li><a href="#">부산</a></li>
+                        <li><a href="#">다른 지역</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3>날짜</h3>
+                <div class="date_filter">
+                    <h3 class="filter_title">날짜</h3>
+                    <div class="input_box">
+                        <input type="text" title="검색기간 시작일" value="" class="input_txt" id="date_from">
+                        <a href="#" class="calendar" onclick="return tCR('a=fno.datecalenderopen');">
+                            달력 레이어 호출
+                        </a>
+                    </div>
+                    <div class="input_box">
+                        <input type="text" title="검색기간 종료일" value="" class="input_txt" id="date_to">
+                        <a href="#" class="calendar" onclick="return tCR('a=fno.datecalenderopen');">
+                            달력 레이어 호출
+                        </a>
+                    </div>
                 </div>
+
+                <a href="#">적용하기</a>
             </section>
         </div>
         <script type="text/javascript" src="javascripts/exhibits.js"></script>

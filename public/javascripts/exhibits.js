@@ -12,7 +12,6 @@ var exhibitsPerPage;
 
 const pagePerNav = 10;
 
-/* Caller: nextPage() and at beginning */
 function requestExhibitsTotal(page) {
     $.getJSON("/exhibits/total?page=" + String(page), (data) => {
         const {total_page, exhibits_per_page, exhibits} = data;
@@ -62,7 +61,6 @@ function appendZero(number) {
     return str;
 }
 
-/* DOING: */
 function showNav(page) {
     const exhibitNav = document.querySelector(".exhibition_nav");
 
@@ -110,6 +108,15 @@ function showNav(page) {
     exhibitNav.appendChild(exhibitsNextBtn);
 }
 
+function showFilter() {
+    const inputBoxList = document.querySelectorAll('.input_txt');
+
+    for (var i = 0; i < 2; i++) {
+        inputBoxList[i].addEventListener('input', dateInputListener);
+    }
+}
+
+/* Event listeners */
 const onClickNavButton = (ev) => {
     const target = ev.target;
     const newPage = parseInt(target.getAttribute('data-page'));
@@ -118,6 +125,37 @@ const onClickNavButton = (ev) => {
     showNav (newPage);
     page = newPage;
 }
+const dateInputListener = (ev) => {
+    var str = ev.target.value.replace(/[^0-9]/g, '').substring(0, 8);
+    console.log(str);
+
+    if (str.length == 8) {
+        var year = str.substring(0, 4);
+        var month = str.substring(4, 6);
+        var date = str.substring(6, 8);
+
+        if (parseInt(month) > 12) {
+            month = "12";
+        } else if (parseInt(month) == 0) {
+            month = "1";
+        }
+
+        const lastDate = new Date(year, month, 0).getDate();
+        if (parseInt(date) > lastDate) {
+            date = String(lastDate);
+        } else if (date == 0) {
+            date = "1";
+        }
+
+        if (month.length == 1) month = "0" + month;
+        if (date.length == 1) date = "0" + date;
+
+        str = (year + "." + month + "." + date + ".")
+    }
+
+    ev.target.value = str;
+}
 
 requestExhibitsTotal(1);
 showNav(1);
+showFilter();

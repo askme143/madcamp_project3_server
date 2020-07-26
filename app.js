@@ -10,6 +10,9 @@ const bodyParser = require('body-parser');
 const apiDB = require('./api/db');
 const apiExhibits = require('./api/exhibits');
 
+/* Module for maintanence */
+const maintanence = require('./maintanence/db_update');
+
 /* Put functions in the middleware */
 /* logger */
 app.use(logger('dev'));
@@ -26,6 +29,9 @@ app.post('/exhibits/upload', apiDB.putExhibits);
 
 /* Exhibits page */
 app.get('/exhibits/total', apiExhibits.getExhibits);
+
+/* maintanence */
+app.post('/maintain', maintanence.updateDistrict)
 
 debug('> App initiated')
 module.exports = app;

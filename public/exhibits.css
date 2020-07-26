@@ -71,7 +71,7 @@ nav {
     height:70px;
     line-height:70px;
     padding:0 16px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 /* user info */
@@ -259,13 +259,62 @@ nav {
 }
 
 /* Filter */
-.filter {
-    width:15%;
-    margin: 0 20px;
-    padding:20px;
+.filter_area {
+    width: 15%;
+    height: 400px;
+    margin: 20px;
+    padding: 20px;
     background-color: #eeeeee;
     box-sizing: border-box;
 }
-.filter h3 {
+.filter_area h3 {
+    margin: 0 0 10px -5%;
     font-family: 'BBTreeGL';
+}
+.filter_area > div:not(:first-child) {
+    margin-top: 20px;
+}
+
+/* District filter */
+.district_filter {
+    border-bottom: 1px solid #444444;
+}
+.district_list li {
+    font-size:0.95rem;
+    margin: 20px 0;
+}
+
+/* Date filter */
+.date_filter .input_box {
+    width:100%;
+
+    margin-top: 15px;
+    text-align: center;
+}
+
+.input_txt {
+    width: inherit;
+    height: 20px;
+    border: 0;
+    font-family: '돋움',dotum,helvetica,'나눔바른고딕 옛한글','NanumBarunGothic YetHangul','새굴림',sans-serif;
+    font-size: 11px;
+    color: #b3b3b3;
+    line-height: 20px;
+    vertical-align: top;
+}
+
+.calendar {
+    position: relative;
+    top:-20px;
+    float:right;
+    
+    width:17px;
+    height:17px;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size:0;
+    background: url(pngs/calendar.png);
+    background-position: -2px -73px;
 }

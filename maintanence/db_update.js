@@ -24,6 +24,7 @@ function updateExhibitsImage(db) {
 var mongoClient = require('mongodb').MongoClient;
 
 const databaseURL = 'mongodb://localhost:27017';
+var db;
 
 mongoClient.connect(databaseURL,
     (error, database) => {
@@ -33,6 +34,26 @@ mongoClient.connect(databaseURL,
         }
 
         console.log('db was connected : ' + databaseURL);
-        updateExhibitsImage(database);
+        db = database;
     }
 );
+
+const updateDistrict = (req, res, next) => {
+    const exhibit = req.body;
+
+    const exhibitsCollection = db.db('prj3').collection('exhibits')
+    
+    exhibitsCollection.insertOne(exhibit, (err, result) => {
+        if (err) {
+            exhibitsCollection.updateOne({"title":exhibit.title},
+                {$set: {"district": exhibit.district}});
+        }
+    })
+    
+    res.statusCode = 200;
+    res.send("success");
+}
+
+module.exports = {
+    updateDistrict
+}
