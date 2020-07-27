@@ -21,7 +21,7 @@ const checkNaver = (req, res, next) => {
     const email = req.query.email;
     console.log(email);
     
-    var users = db.db('prj3').collection('user');
+    var users = db.db('prj3').collection('users');
     users.findOne({'email':email}, (error, document) => {
         if (error) throw error;
 
@@ -37,14 +37,14 @@ const checkNaver = (req, res, next) => {
     });
 };
 
-const signUpUser = (req, res, next) => {
+const signupUser = (req, res, next) => {
     console.log("> Sign up process started");
 
-    const {fb_id, name} = req.body;
-    const user = {fb_id, name};
+    const {email, password, name} = req.body;
+    const user = {email, password, name};
 
-    var users = db.db('myDB').collection('user');
-    var result = users.find({'name': name, 'fb_id': fb_id});
+    var users = db.db('prj3').collection('users');
+    var result = users.find({'email': email});
 
     result.toArray((error, documents) => {
         if (error) {
@@ -71,5 +71,5 @@ const signUpUser = (req, res, next) => {
 
 module.exports = {
     checkNaver,
-    signUpUser
+    signupUser
 }

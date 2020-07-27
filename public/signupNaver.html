@@ -1,45 +1,49 @@
 <!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="utf-8">
-    <title>네이버 로그인</title>
-    <link rel="stylesheet" href="css/login.css">
-    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="javascripts/signupNaver.js"></script>
-</head>
-<body>
-    <div id="wrap">
-        <header>
-            <h1>
-                <a href="main.html" id="logo">한국의 모든 전시회</a>
-                <span>회원가입</span>
+    <head>
+        <meta charset="utf-8">
+        <title>네이버 로그인</title>
+        <link rel="stylesheet" href="css/login.css">
+        <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    </head>
+    <body>
+        <div id="wrap">
+            <header>
+                <h1>
+                    <a href="main.html" id="logo">한국의 모든 전시회</a>
+                    <span>회원가입</span>
             </h1>
-        </header>
+            </header>
+        </div>
         <div id="container">
             <div id="content">
-                <form action="login.html">
+                <form>
                     <fieldset class="login_form">
+                        <span id="user_name">이름: </span>
+                        <br>
+                        <span id="user_email">이메일: </span>
                         <div class="input_row" id="id_area">
                             <span class="input_box">
-                                <input type="text" id="id" name="id" placeholder="아이디">
+                                <input type="password" id="pw" name="pw" placeholder="비밀번호" maxlength="16">
                             </span>
                             <div class="error" id="error_empty_id">
                             </div>
                         </div>
                         <div class="input_row" id="pw_area">
                             <span class="input_box">
-                                <input type="password" id="pw" name="pw" placeholder="비밀번호" class="int" maxlength="16">
+                                <input type="password" id="pw_check" name="pw_check" placeholder="비밀번호 확인" maxlength="16">
                             </span>
                             <div class="error" id="error_capslock" style="display:none;">
                             </div>
                         </div>
-                        <input type="submit" title="로그인" alt="로그인" value="로그인" class="btn_global" id="log.login">
+                        <input type="submit" title="회원가입" alt="회원가입" value="회원가입" id="signup_btn">
                     </fieldset>
                 </form> 
             </div>
         </div>
         <div id="footer">
         </div>
-    </div>
+        <script type="text/javascript" src="javascripts/signupNaver.js"></script>
+    </body>
 </html>
