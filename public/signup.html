@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>네이버 로그인</title>
+    <link rel="stylesheet" href="css/login.css">
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="javascripts/login.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>
+                <a href="#" id="logo">한국의 모든 전시회</a>
+                <span>회원가입</span>
+            </h1>
+        </header>
+        <div id="container">
+            <div id="content">
+                <form action="login.html">
+                    <fieldset class="login_form">
+                        <div class="input_row" id="id_area">
+                            <span class="input_box">
+                                <input type="text" id="id" name="id" placeholder="아이디">
+                            </span>
+                            <div class="error" id="error_empty_id">
+                            </div>
+                        </div>
+                        <div class="input_row" id="pw_area">
+                            <span class="input_box">
+                                <input type="password" id="pw" name="pw" placeholder="비밀번호" class="int" maxlength="16">
+                            </span>
+                            <div class="error" id="error_capslock" style="display:none;">
+                            </div>
+                        </div>
+                        <span class="login_check_box">
+                            <input type="checkbox" id="login_chk" name="nvlong" class="" value="off">
+                            <label for="login_chk" id="label_login_chk" class="ico_keep_check ">로그인 상태 유지</label>
+                        </span>
+                        <input type="submit" title="로그인" alt="로그인" value="로그인" class="btn_global" id="log.login">
+                    </fieldset>
+                    <div id="naver_id_login"></div>
+                </form> 
+            </div>
+        </div>
+        <div id="footer">
+        </div>
+    </div>
+  <!-- //네이버아이디로로그인 버튼 노출 영역 -->
+  <script type="text/javascript">
+  	var naver_id_login = new naver_id_login("Bp683DwJGRcqChEdMnCs", "http://192.249.19.242:7380/loginNaver.html");
+  	var state = naver_id_login.getUniqState();
+  	naver_id_login.setButton("white", 2,40);
+  	naver_id_login.setDomain("http://192.249.19.242:7380/exhibits.html");
+  	naver_id_login.setState(state);
+  	naver_id_login.setPopup();
+  	naver_id_login.init_naver_id_login();
+  </script>
+</html>
