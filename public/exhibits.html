@@ -2,9 +2,12 @@
 <html lang="ko-KR">
     <head>
         <meta charset="utf-8">
-        <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
+        <!-- <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script> -->
         <link rel="stylesheet" href="css/exhibits.css">
         <title>전시회 모두 보기</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+        <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
     </head>
     <body>
         <!-- Header -->
@@ -361,15 +364,11 @@
                     <div class="filter_body">
                         <div class="input_box">
                             <input type="text" title="검색기간 시작일" value="" class="input_txt" id="date_from">
-                            <a href="#" class="calendar" onclick="return tCR('a=fno.datecalenderopen');">
-                                달력 레이어 호출
-                            </a>
+                            <input type="text" title="검색기간 종료일" value="" class="calendar" id="date_to_btn" readonly>
                         </div>
                         <div class="input_box">
                             <input type="text" title="검색기간 종료일" value="" class="input_txt" id="date_to">
-                            <a href="#" class="calendar" onclick="return tCR('a=fno.datecalenderopen');">
-                                달력 레이어 호출
-                            </a>
+                            <input type="text" title="검색기간 종료일" value="" class="calendar" id="date_to_btn" readonly>
                         </div>
                         <a class="apply_btn"href="#">적용하기</a>
                     </div>

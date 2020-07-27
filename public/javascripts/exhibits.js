@@ -160,6 +160,14 @@ function showFilter() {
     }
 
     applyBtn.addEventListener('click', onClickApply);
+
+    $(function() {
+        $(".calendar").datepicker({
+            // showOn: "both",
+            // buttonImage: "../pngs/calendar.png",
+            // buttonImageOnly: true
+        });
+    });
 }
 
 /* Event listeners */

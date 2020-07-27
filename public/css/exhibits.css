@@ -441,6 +441,9 @@ nav {
     background: url(../pngs/calendar.png);
     background-position: -2px -73px;
 }
+.calendar:focus {
+    outline:none;
+}
 
 .apply_btn {
     height:30px;
