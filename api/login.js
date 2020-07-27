@@ -1,12 +1,12 @@
 var mongoClient = require('mongodb').MongoClient;
 
-const databaseURL = 'mongodb://localhost:27017'
+const databaseURL = 'mongodb://localhost:27017';
 var db;
 
 mongoClient.connect(databaseURL,
     (error, database) => {
         if (error) {
-            console.log('db connection error');
+            console.log('db connect error');
             return;
         }
 
@@ -15,15 +15,14 @@ mongoClient.connect(databaseURL,
     }
 );
 
-
 const checkUser = (req, res, next) => {
     console.log("> Checking user access");
     
-    const {fb_id, name} = req.body;
-    const user = {fb_id, name};
+    const {email, pwd} = req.body;
+    const user = {email, pwd};
     
-    var users = db.db('myDB').collection('user');
-    var result = users.find({'name': name, 'fb_id': fb_id});
+    var users = db.db('prj3').collection('user');
+    var result = users.find({'email':email, 'password':pwd});
     
     result.toArray((error, documents) => {
         if (error) {
@@ -77,30 +76,6 @@ const signUpUser = (req, res, next) => {
         }
     })
 }
-
-function queryStringToJSON(qs) {
-    qs = qs || location.search.slice(1);
-
-    var pairs = qs.split('&');
-    var result = {};
-    pairs.forEach(function(p) {
-        var pair = p.split('=');
-        var key = pair[0];
-        var value = decodeURIComponent(pair[1] || '');
-
-        if( result[key] ) {
-            if( Object.prototype.toString.call( result[key] ) === '[object Array]' ) {
-                result[key].push( value );
-            } else {
-                result[key] = [ result[key], value ];
-            }
-        } else {
-            result[key] = value;
-        }
-    });
-
-    return JSON.parse(JSON.stringify(result));
-};
 
 module.exports = {
     checkUser,

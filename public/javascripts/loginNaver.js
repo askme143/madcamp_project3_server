@@ -1,12 +1,15 @@
-var naver_id_login = new naver_id_login("Bp683DwJGRcqChEdMnCs", "");
-// 접근 토큰 값 출력
-alert(naver_id_login.oauthParams.access_token);
-// 네이버 사용자 프로필 조회
-naver_id_login.get_naver_userprofile("naverSignInCallback()");
-// 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-function naverSignInCallback() {
-    alert(naver_id_login.getProfileData('email'));
-    alert(naver_id_login.getProfileData('name'));
-    alert(naver_id_login.getProfileData('nickname'));
-    alert(naver_id_login.getProfileData('age'));
+function naverSignInCallback(naver_id_login) {
+    console.log(naver_id_login);
+    $.get("http://192.249.19.242:7380/login"
+            + "?email=" + naver_id_login.getProfileData('email'), (data) => {
+        console.log(data);
+        if (data == "success") {
+            window.opener.location = naver_id_login.redirect_uri;
+            window.close();
+        } else {
+            /* Show error message */
+            /* sign up page */
+            window.location = 
+        }
+    })
 }

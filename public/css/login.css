@@ -1,3 +1,5 @@
+@font-face { font-family: 'S-CoreDream-8Heavy'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8Heavy.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 * {
     margin:0;
     padding:0;
@@ -34,15 +36,21 @@ a {
 header {
     box-sizing: border-box;
     width:768px;
-    height:207px;
-    margin:0 auto;
+    height: 250px;
     text-align: center;
     padding: 106px 0 0;
+    margin:0 auto;
 }
 #wrap h1 a {
     display:block;
     margin:0 auto;
-    font-size:3rem;
+    font-family: 'S-CoreDream-8Heavy';
+    font-size: 75px; text-align: center;
+}
+#wrap h1 span {
+    display:block;
+    margin:0 auto;
+    font-size: 20px; text-align: center;
 }
 
 /* Container */

@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 /* My modules(apis) */
 const apiDB = require('./api/db');
 const apiExhibits = require('./api/exhibits');
+const apiUser = require('./api/user');
 
 /* Module for maintanence */
 const maintanence = require('./maintanence/db_update');
@@ -32,6 +33,7 @@ app.get('/exhibits/total', apiExhibits.getExhibits);
 
 /* maintanence */
 app.post('/maintain', maintanence.updateDistrict)
+app.get('/login', apiUser.checkNaver);
 
 debug('> App initiated')
 module.exports = app;

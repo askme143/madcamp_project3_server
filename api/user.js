@@ -15,34 +15,26 @@ mongoClient.connect(databaseURL,
     }
 );
 
-const checkUser = (req, res, next) => {
+const checkNaver = (req, res, next) => {
     console.log("> Checking user access");
     
-    const {email, pwd} = req.body;
-    const user = {email, pwd};
+    const email = req.query.email;
+    console.log(email);
     
     var users = db.db('prj3').collection('user');
-    var result = users.find({'email':email, 'password':pwd});
-    
-    result.toArray((error, documents) => {
-        if (error) {
-            console.log("Error: checkUser");
+    users.findOne({'email':email}, (error, document) => {
+        if (error) throw error;
 
-            throws (error);
-        } else if (documents.length > 0) {
-            console.log("Login success");
+        console.log(document);
 
+        if (document != null) {
             res.statusCode = 200;
-            res.setHeader('Content-Type', 'text/plain');
-            res.send("success");
+            res.send("success");   
         } else {
-            console.log("Login failed");
-
             res.statusCode = 200;
-            res.setHeader('Content-Type', 'text/plain');
-            res.send("failed");
+            res.send("fail");
         }
-    })
+    });
 };
 
 const signUpUser = (req, res, next) => {
@@ -78,6 +70,6 @@ const signUpUser = (req, res, next) => {
 }
 
 module.exports = {
-    checkUser,
+    checkNaver,
     signUpUser
 }

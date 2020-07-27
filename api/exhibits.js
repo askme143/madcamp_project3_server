@@ -7,6 +7,7 @@ mongoClient.connect(databaseURL,
     (error, database) => {
         if (error) {
             console.log('db connection error');
+            console.log(error);
             return;
         }
 
