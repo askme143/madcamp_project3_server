@@ -1,8 +1,11 @@
-var imageBoxList = document.querySelectorAll(".img_box img");
+var imageBoxLinkList = document.querySelectorAll(".img_box a");
+var exhibitImageList = document.querySelectorAll(".img_box img");
 var titleList = document.querySelectorAll(".title > a");
 var periodList = document.querySelectorAll(".period");
 var placeList = document.querySelectorAll(".place");
 var feeList = document.querySelectorAll(".fee");
+var resvBtnList = document.querySelectorAll(".resv_btn");
+var mapBtnList = document.querySelectorAll(".map_btn");
 
 var listItemList = document.querySelectorAll('.list_item');
 var listGroupList = document.querySelectorAll('.list_group');
@@ -16,6 +19,7 @@ var totalPage;
 var exhibitsPerPage;
 
 const pagePerNav = 10;
+const naverSearchUrl = "https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&mra=bjBC&pkid=360&query=";
 
 function requestExhibitsTotal(page) {
     $.getJSON("/exhibits/total?page=" + String(page)
@@ -49,11 +53,33 @@ function requestExhibitsTotal(page) {
 
             var period = startDate + " ~ " + finishDate;
 
-            imageBoxList[i].src = exhibit.thumb_url;
+            exhibitImageList[i].src = exhibit.thumb_url;
             titleList[i].text = exhibit.title;
             periodList[i].innerHTML = period;
             placeList[i].innerHTML = exhibit.place;
-            feeList[i].innerHTML = exhibit.fee;
+            feeList[i].innerHTML = "";
+            // feeList[i].innerHTML = exhibit.fee;
+
+            imageBoxLinkList[i].setAttribute('href', naverSearchUrl + exhibit.title);
+            imageBoxLinkList[i].setAttribute('target', '_blank');
+            titleList[i].setAttribute('href', naverSearchUrl + exhibit.title);
+            titleList[i].setAttribute('target', '_blank');
+
+            if (exhibit.place_url == "null") {
+                mapBtnList[i].setAttribute('class', 'blind');
+            } else {
+                mapBtnList[i].setAttribute('class', 'map_btn');
+                mapBtnList[i].setAttribute('href', exhibit.place_url);
+                mapBtnList[i].setAttribute('target', '_blank');
+            }
+
+            if (exhibit.reserv_url == "null") {
+                resvBtnList[i].setAttribute('class', 'blind');
+            } else {
+                resvBtnList[i].setAttribute('class', 'resv_btn');
+                resvBtnList[i].setAttribute('href', exhibit.reserv_url);
+                resvBtnList[i].setAttribute('target', '_blank');
+            }
         }
         for (var i = len; i < exhibits_per_page; i++) {
             listItemList[i].setAttribute('class', "blind_item");
