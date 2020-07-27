@@ -32,10 +32,10 @@ app.post('/exhibits/upload', apiDB.putExhibits);
 app.get('/exhibits/earlybird', apiExhibits.getEarlyExhibits);
 app.get('/exhibits/total', apiExhibits.getExhibits);
 
+app.get('/loginNaver', apiUser.checkNaver);
+app.post('/signup', apiUser.signupUser);
 
 /* maintanence */
 app.post('/maintain', maintanence.updateDistrict)
-app.get('/login', apiUser.checkNaver);
-
 debug('> App initiated')
 module.exports = app;
