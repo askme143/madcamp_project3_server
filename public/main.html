@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>slider in Javascript</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+<header>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">모든 전시 보기</a></li>
+        <li style="float: right"><a href="#signup">회원가입</a></li>
+        <li style="float: right"><a href="#login">로그인</a></li>
+        <li style="float: right">
+            <div class="search">
+                <input type="text" class="searchTerm" placeholder="유미의 세포들">
+                <button type="submit" class="searchButton">
+                    <img class="real" src="pngs/search.png">
+               </button>
+             </div>
+        </li>
+    </ul>
+</header>
+
+<div class="top">
+    <h1>한국의 모든 전시회 </h1>
+    <section class="home">
+        <div class="slider">
+            <div class="slide active" style="background-image: url('pngs/poster1.jpg')"></div>
+            <div class="slide" style="background-image: url('pngs/poster2.jpg')"> </div>
+            <div class="slide" style="background-image: url('pngs/poster3.jpg')"> </div>
+            <div class="slide" style="background-image: url('pngs/poster4.jpg')"> </div>
+        </div>
+        <div class="indicator">
+        </div>
+    </section>
+</div>
+
+
+ 
+<script type="text/javascript" src="javascripts/imagemover.js"></script>
+<main>
+    <section class="table1"></section>
+    <h2 class="order-by">곧 끝나는 전시
+        <small><a class="p-1" href="">더보기</a></small>
+    </h2>
+    <div class="row-exhibition-block">
+        <div class="exhibition-box">
+            <a href=""><img class="img-responsive" src="pngs/poster1.jpg"></a>
+            <h3 class="exhibition-name">유미의 세포들 특별전</h3>
+            <p class="exhibition-date">2020.07.15 ~ 2021.03.14</p>
+        </div>
+        <div class="exhibition-box">
+            <a href=""><img class="img-responsive" src="pngs/poster2.jpg"></a>
+            <h3 class="exhibition-name">퓰리처상 사진전</h3>
+            <p class="exhibition-date">2020.07.01 ~ 2020.10.18</p>
+        </div>
+        <div class="exhibition-box">
+            <a href=""><img class="img-responsive" src="pngs/poster2.jpg"></a>
+            <h3 class="exhibition-name">The Pulitzer Prize Photographs</h3>
+            <p class="exhibition-date">2020.07.01 ~ 2020.10.18</p>
+        </div>
+        <div class="exhibition-box">
+            <a href=""><img class="img-responsive" src="pngs/poster4.jpg"></a>
+            <h3 class="exhibition-name">My Dear 피노키오</h3>
+            <p class="exhibition-date">2020.07.01 ~ 2020.10.18</p>
+        </div>
+    </div>
+    </section>
+
+    
+    <section class="tables"></section>
+    <h2 class="order-by">시작 예정 전시
+        <small><a class="p-1" href="">더보기</a></small>
+    </h2>
+    <div class="row-exhibition-block">
+        <div class="exhibition-box">
+            <a href=""><img class="img-responsive" src="pngs/poster1.jpg"></a>
+            <h3 class="exhibition-name">유미의 세포들 특별전</h3>
+            <p class="exhibition-date">2020.07.15 ~ 2021.03.14</p>
+        </div>
+        <div class="exhibition-box">
+            <a href=""><img class="img-responsive" src="pngs/poster2.jpg"></a>
+            <h3 class="exhibition-name">퓰리처상 사진전</h3>
+            <p class="exhibition-date">2020.07.01 ~ 2020.10.18</p>
+        </div>
+        <div class="exhibition-box">
+            <a href=""><img class="img-responsive" src="pngs/poster2.jpg"></a>
+            <h3 class="exhibition-name">The Pulitzer Prize Photographs</h3>
+            <p class="exhibition-date">2020.07.01 ~ 2020.10.18</p>
+        </div>
+        <div class="exhibition-box">
+            <a href=""><img class="img-responsive" src="pngs/poster4.jpg"></a>
+            <h3 class="exhibition-name">My Dear 피노키오</h3>
+            <p class="exhibition-date">2020.07.01 ~ 2020.10.18</p>
+        </div>
+    </div>
+    </section>
+</main>
+    
+<footer>
+    <p> Made By.윤하나 윤영일</p>
+    <p>COPYRIGHT C 2020. CO.LTD.ALL RIGHTS RESERVED</p>
+</footer>
+
+</body>
+</html>
+
+
+
