@@ -9,7 +9,7 @@ function naverSignInCallback(naver_id_login) {
         } else {
             /* Show error message */
             /* sign up page */
-            window.location = 
+            // window.location = 
         }
     })
 }
