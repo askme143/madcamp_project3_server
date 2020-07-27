@@ -14,6 +14,9 @@ var currentPage = 1;
 var district = "";
 var dateFrom = "";
 var dateTo = "";
+var early = "";
+var link="#";
+// var page = 1;
 
 var totalPage;
 var exhibitsPerPage;
@@ -23,11 +26,17 @@ const naverSearchUrl = "https://search.naver.com/search.naver?where=nexearch&sm=
 
 function requestExhibitsTotal(page) {
     $.getJSON("/exhibits/total?page=" + String(page)
+                + "&early_date=" + early
                 + "&district=" + district
                 + "&date_from=" + dateFrom
                 + "&date_to=" + dateTo, (data) => {
         const {total_page, exhibits_per_page, exhibits} = data;
         const len = exhibits.length;
+
+        console.log(titleList);
+        console.log(periodList);
+        console.log(imageBoxLinkList);
+        console.log(exhibitImageList);
 
         for (var i = 0; i < len; i++) {
             const exhibit = exhibits[i];
@@ -119,7 +128,7 @@ function showNav(page) {
     } else {
         exhibitsPrevBtn.setAttribute('class', "icon prev-page");
         exhibitsPrevBtn.addEventListener('click', onClickNavButton);
-        exhibitsPrevBtn.setAttribute('href', "#");
+        exhibitsPrevBtn.setAttribute('href', link);
     }
     if (nextPage > totalPage) {
         nextPage = totalPage + 1;
@@ -127,7 +136,7 @@ function showNav(page) {
     } else {
         exhibitsNextBtn.setAttribute('class', "icon next-page");
         exhibitsNextBtn.addEventListener('click', onClickNavButton);
-        exhibitsNextBtn.setAttribute('href', "#");
+        exhibitsNextBtn.setAttribute('href', link);
     }
     
     exhibitNav.appendChild(exhibitsPrevBtn);
@@ -139,7 +148,7 @@ function showNav(page) {
             numberBtn.setAttribute('class', "selected");
         } else {
             numberBtn.addEventListener('click', onClickNavButton);
-            numberBtn.setAttribute('href', "#");
+            numberBtn.setAttribute('href', link);
         }
 
         exhibitNav.appendChild(numberBtn);
@@ -254,5 +263,19 @@ function flushDate() {
     dateFrom = "";
     dateTo = "";
 }
-requestExhibitsTotal(1);
-showFilter();
+
+
+console.log(window.location.href.split('?'));
+if (window.location.href.split('?').length > 1) {
+    var today = new Date();
+    var today_year = today.getFullYear();
+    var today_month = today.getMonth()+1;
+    var today_day = today.getDate();
+    early = (today_year*10000 + today_month*100 + today_day).toString();
+    dateTo="";
+    requestExhibitsTotal(1);
+    showFilter();
+} else {
+    requestExhibitsTotal(1);
+    showFilter(); 
+}

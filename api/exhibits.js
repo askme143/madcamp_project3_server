@@ -26,6 +26,7 @@ const getExhibits = (req, res, next) => {
     var dateFrom = req.query.date_from;
     var dateTo = req.query.date_to;
     var district = req.query.district;
+    var early = req.query.early_date;
 
     const exhibitsCollection = db.db('prj3').collection("exhibits");
 
@@ -33,6 +34,10 @@ const getExhibits = (req, res, next) => {
     
     if (district.length > 0) {
         query['district'] = district;
+    }
+    if (early.length > 0) {
+        query['start_num'] = {"$gt":parseInt(early)};
+        // query['finish_num'] = {"$gte":parseInt(dateFrom)};
     }
     if (dateFrom.length > 0) {
         query['start_num'] = {"$lte":parseInt(dateFrom)};
@@ -76,6 +81,35 @@ const getExhibits = (req, res, next) => {
     })
 }
 
+
+const getEarlyExhibits = (req, res, next) => {
+    /* TODO: Implement various sorting */
+    console.log ("> Get early exhibits");
+    var dateFrom = req.query.date_from;
+
+    const exhibitsCollection = db.db('prj3').collection("exhibits");
+    var query = {}
+    if (dateFrom.length > 0) {
+        query['start_num'] = {"$lte":parseInt(dateFrom)};
+        query['finish_num'] = {"$gte":parseInt(dateFrom)};
+    }
+    if (dateFrom.length > 0) {
+        var fromNum = parseInt(dateFrom);
+    }
+
+    // query['start_num'] = {"$lte":fromNum};
+    const result = exhibitsCollection.find(query);
+    
+    result.toArray((error, documents) => {
+        // if (error) throw error;
+
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "application/json");
+        res.send({ "exhibits" : documents});
+    })
+}
+
 module.exports = {
-    getExhibits
+    getExhibits,
+    getEarlyExhibits
 }
