@@ -190,6 +190,7 @@ nav {
 .item_box {
     width:50%;
     margin:0 0 0 10%;
+    position: relative;
 }
 .img_box img {
     resize:both;
@@ -218,6 +219,28 @@ nav {
     text-overflow: ellipsis;
     overflow: hidden;
 }
+.item_btn {
+    display:block;
+    position: absolute;
+    bottom:0px;
+    margin: 20px 0 0;
+    width:100%;
+    height:100%;
+}
+.reservation_btn {
+    position: absolute;
+    display:block;
+    bottom:0px;
+    width:40%;
+    height:30px;
+    background: #eeeeee;
+}
+.map_btn {
+    width:40%;
+    bottom:0px;
+    height:30px;
+    background: #eeeeee;
+}
 
 /* exhibition navigation */
 .exhibition_nav {
@@ -245,7 +268,7 @@ nav {
     border: 1px solid #ff5e00;
 }
 .exhibition_nav .icon {
-    background:url(pngs/ico_paging.png);
+    background:url(../pngs/ico_paging.png);
     margin: 0 4px;
 }
 
@@ -331,7 +354,7 @@ nav {
     text-overflow: ellipsis;
     overflow: hidden;
     font-size:0;
-    background: url(pngs/calendar.png);
+    background: url(../pngs/calendar.png);
     background-position: -2px -73px;
 }
 
