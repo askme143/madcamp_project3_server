@@ -110,12 +110,14 @@
         </main>
         <script>
             var searchBtn = document.querySelector('.searchButton');
+            var name_address = "http://192.249.19.245:3680/exhibits.html?name="
+            console.log(searchBtn);
             const onClickSearchButton = (ev) => {
                 var search_name = document.querySelector(".searchTerm").value;
-                var name_address = "http://192.249.19.245:3680/exhibits.html?name="
+                console.log(search_name);
                 window.location.href = name_address + search_name;
+            }
             searchBtn.addEventListener("click", onClickSearchButton);
-        }
         </script>
         
         <footer>
