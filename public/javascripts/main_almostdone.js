@@ -53,8 +53,6 @@ function requestLateBirdExhibits() {
             
                 imageBoxLinkList1[count-1].setAttribute('href', naverSearchUrl + exhibit.title);
                 imageBoxLinkList1[count-1].setAttribute('target', '_blank');
-                // titleList1[count-1].setAttribute('href', naverSearchUrl + exhibit.title);
-                // titleList1[count-1].setAttribute('target', '_blank');
             }
         }
     })

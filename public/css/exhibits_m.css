@@ -57,7 +57,7 @@ header a {
     padding: 40px 40px 0 40px;
     box-sizing: border-box;
 
-    font-size:5em;
+    font-size:5rem;
     text-align: center;
 }
 #logo::after {
@@ -73,7 +73,7 @@ header a {
     margin: 50px 0 0;
 }
 .menu a {
-    font-size: 2.5em;
+    font-size: 2.5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -102,11 +102,11 @@ header a {
 .search input {
     width:80%;
     border-radius: 10px 0 0 10px;
-    font-size:2em;
+    font-size:2rem;
 }
 .search button {
-    width: 4em;
-	height: 5em;
+    width: 4rem;
+	height: 5rem;
 	border: 1px solid #C2C2C2;
 	background: #C2C2C2;
 	text-align: center;
@@ -140,7 +140,7 @@ header a {
 }
 .filter_title {
     margin: 20px 20px 20px 20px;
-    font-size: 3em;
+    font-size: 3rem;
 }
 
 .district_filter {
@@ -164,7 +164,7 @@ header a {
 .district_list a {
     flex-grow:1;
     margin: 0 10px;
-    font-size: 2em;
+    font-size: 2rem;
     color: #515151
 }
 
@@ -204,7 +204,7 @@ header a {
     height: 50px;
     border: 0;
     font-family: '돋움',dotum,helvetica,'나눔바른고딕 옛한글','NanumBarunGothic YetHangul','새굴림',sans-serif;
-    font-size: 2em;
+    font-size: 2rem;
     color: #b3b3b3;
     line-height: 20px;
     vertical-align: top;
@@ -307,13 +307,13 @@ header a {
     flex-basis: 100%;
 }
 .item_list dd {
-    font-size:2em;
+    font-size:2rem;
     margin: 10px 0;
 }
 .item_list .title a {
     width:100%;
     font-style: normal;
-    font-size: 1.3em;
+    font-size: 2.5rem;
     font-weight: 900;
     display: block;
     white-space: nowrap;
@@ -342,7 +342,7 @@ header a {
 .btn_text {
     display: block;
     flex-grow: 1;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     text-align: center;
     border-left: 1px solid #cccccc
 }
