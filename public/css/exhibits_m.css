@@ -84,7 +84,7 @@ header a {
     flex-basis:40%;
 }
 #login_btn {
-    margin:60px 0 0;
+    margin:60px 5% 0;
 }
 #login_btn span{
     display:none;
@@ -132,19 +132,18 @@ header a {
     display:flex;
     flex-flow:column nowrap;
     order:2;
-    
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
     background-color: #eeeeee;
 }
 .filter_title {
-    margin: 20px 20px 20px 20px;
-    font-size: 3rem;
+    margin: 20px 10px 20px 20px;
+    font-size: 3em;
 }
 
 .district_filter {
-    display:flex;
+    display: flex;
     align-items: center;
 }
 .district_filter h3 {
@@ -156,15 +155,15 @@ header a {
 .district_list {
     display:flex;
     flex-flow: row wrap;
+    justify-content: space-around;
 }
 .district_list li {
     flex-grow:1;
-    text-align: center
+    text-align: center;
 }
 .district_list a {
     flex-grow:1;
-    margin: 0 10px;
-    font-size: 2rem;
+    font-size: 2em;
     color: #515151
 }
 
@@ -172,7 +171,7 @@ header a {
     display: flex;
     align-items: center;
 }
-.date_filter .filter_title {
+.date_filter h3 {
     width:40%;
     flex-grow:1;
 }
@@ -180,7 +179,7 @@ header a {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-end;
-    flex-grow:1;
+    flex-grow: 1;
 }
 .date_filter .input_box {
     width:30%;
@@ -191,14 +190,24 @@ header a {
     width:100%;
 }
 .apply_btn {
+    visibility: hidden;
+    position: relative;
+    
+}
+.apply_btn:after {
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
     margin: 0 5%;
     box-sizing: border-box;
     padding: 0 10px;
-    height:50px;
+    height: 50px;
     line-height: 50px;
     text-align:center;
     color: #eeeeee;
     background: #515151;
+    content: "적용";
 }
 .input_txt {
     height: 50px;
