@@ -2,27 +2,37 @@
 <html lang="ko-KR">
     <head>
         <meta charset="utf-8">
-        <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="css/exhibits.css">
+        <link media="only screen and (min-width : 1200px)" rel="stylesheet" href="css/exhibits.css">
+        <link media="not screen and (min-width : 1200px)" rel="stylesheet" href="css/exhibits_m.css">
         <title>전시회 모두 보기</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+        <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
     </head>
     <body>
         <!-- Header -->
         <header>
-            <ul>
-                <li><a href="main.html"><img class="logo" src="pngs/logo.png"></a></li>
-                <li><a href="exhibits.html">모든 전시 보기</a></li>
-                <li style="float: right"><a href="signup.html">회원가입</a></li>
-                <li style="float: right"><a href="login.html">로그인</a></li>
-                <li style="float: right">
-                    <div class="search">
-                        <input type="text" class="searchTerm" placeholder="유미의 세포들">
-                        <button type="button" class="searchButton">
-                            <img class="real" src="pngs/search.png">
-                       </button>
-                     </div>
-                </li>
-            </ul>
+            <div class="header_container">
+                <div id="logo"><a href="main.html">Home</a></div>
+                <ul class="user">
+                    <li id="login_btn" style="float: right">
+                        <a href="login.html">
+                            <img src="pngs/user.png">
+                            <span>로그인</span>
+                        </a>
+                    </li>
+                    <li id="signup_btn" style="float: right"><a href="signup.html">회원가입</a></li>
+                </ul>
+                <ul class="menu">
+                    <li><a href="exhibits.html">모든 전시 보기</a></li>
+                </ul>
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="유미의 세포들">
+                    <button type="button" class="searchButton">
+                        <img class="real" src="pngs/search.png">
+                    </button>
+                </div>
+            </div>
         </header>
 
         <!-- Content -->
@@ -100,13 +110,13 @@
                     <ul class="list_group">
                         <li class="list_item">
                             <div class="img_box">
-                                <a href="#"><img src="example.jpg"></a>
+                                <a href="#"><img src="#"></a>
                             </div>
                             <div class="item_box">
                                 <dl class="item_list">
                                     <dt class="blind">전시회명</dt>
                                     <dd class="title">
-                                        <a href="#">전시회3</a>
+                                        <a href="#">전시회1</a>
                                     </dd>
                                     <dt class="blind">기간</dt>
                                     <dd class="period">...~...</dd>
@@ -114,17 +124,17 @@
                                     <dd class="place">ㅇㅇ예술의전당</dd>
                                     <dt class="blind">요금</dt>
                                     <dd class="fee">100원</dd>
-                                    <div class="item_btn">
-                                        <a class="resv_btn" href="#">
-                                            <span class="btn_icon resv_icon"></span>
-                                            <span class="btn_text resv_text">예약</span>
-                                        </a>
-                                        <a class="map_btn" href="#">
-                                            <span class="btn_icon map_icon"></span>
-                                            <span class="btn_text map_text">지도</span>
-                                        </a>
-                                    </div>
                                 </dl>
+                                <div class="item_btn">
+                                    <a class="resv_btn" href="#">
+                                        <span class="btn_icon resv_icon"></span>
+                                        <span class="btn_text resv_text">예약</span>
+                                    </a>
+                                    <a class="map_btn" href="#">
+                                        <span class="btn_icon map_icon"></span>
+                                        <span class="btn_text map_text">지도</span>
+                                    </a>
+                                </div>
                             </div>
                         </li>
                         <li class="list_item">
@@ -135,7 +145,7 @@
                                 <dl class="item_list">
                                     <dt class="blind">전시회명</dt>
                                     <dd class="title">
-                                        <a href="#">전시회4</a>
+                                        <a href="#">전시회2</a>
                                     </dd>
                                     <dt class="blind">기간</dt>
                                     <dd class="period">...~...</dd>
@@ -166,7 +176,7 @@
                                 <dl class="item_list">
                                     <dt class="blind">전시회명</dt>
                                     <dd class="title">
-                                        <a href="#">전시회5</a>
+                                        <a href="#">전시회1</a>
                                     </dd>
                                     <dt class="blind">기간</dt>
                                     <dd class="period">...~...</dd>
@@ -174,88 +184,28 @@
                                     <dd class="place">ㅇㅇ예술의전당</dd>
                                     <dt class="blind">요금</dt>
                                     <dd class="fee">100원</dd>
-                                    <div class="item_btn">
-                                        <a class="resv_btn" href="#">
-                                            <span class="btn_icon resv_icon"></span>
-                                            <span class="btn_text resv_text">예약</span>
-                                        </a>
-                                        <a class="map_btn" href="#">
-                                            <span class="btn_icon map_icon"></span>
-                                            <span class="btn_text map_text">지도</span>
-                                        </a>
-                                    </div>
                                 </dl>
+                                <div class="item_btn">
+                                    <a class="resv_btn" href="#">
+                                        <span class="btn_icon resv_icon"></span>
+                                        <span class="btn_text resv_text">예약</span>
+                                    </a>
+                                    <a class="map_btn" href="#">
+                                        <span class="btn_icon map_icon"></span>
+                                        <span class="btn_text map_text">지도</span>
+                                    </a>
+                                </div>
                             </div>
                         </li>
                         <li class="list_item">
                             <div class="img_box">
-                                <a href="#"><img src="#"></a>
+                                <a href="#"><img src="example.jpg"></a>
                             </div>
                             <div class="item_box">
                                 <dl class="item_list">
                                     <dt class="blind">전시회명</dt>
                                     <dd class="title">
-                                        <a href="#">전시회6</a>
-                                    </dd>
-                                    <dt class="blind">기간</dt>
-                                    <dd class="period">...~...</dd>
-                                    <dt class="blind">장소</dt>
-                                    <dd class="place">ㅇㅇ예술의전당</dd>
-                                    <dt class="blind">요금</dt>
-                                    <dd class="fee">100원</dd>
-                                    <div class="item_btn">
-                                        <a class="resv_btn" href="#">
-                                            <span class="btn_icon resv_icon"></span>
-                                            <span class="btn_text resv_text">예약</span>
-                                        </a>
-                                        <a class="map_btn" href="#">
-                                            <span class="btn_icon map_icon"></span>
-                                            <span class="btn_text map_text">지도</span>
-                                        </a>
-                                    </div>
-                                </dl>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="list_group">
-                        <li class="list_item">
-                            <div class="img_box">
-                                <a href="#"><img src="#"></a>
-                            </div>
-                            <div class="item_box">
-                                <dl class="item_list">
-                                    <dt class="blind">전시회명</dt>
-                                    <dd class="title">
-                                        <a href="#">전시회7</a>
-                                    </dd>
-                                    <dt class="blind">기간</dt>
-                                    <dd class="period">...~...</dd>
-                                    <dt class="blind">장소</dt>
-                                    <dd class="place">ㅇㅇ예술의전당</dd>
-                                    <dt class="blind">요금</dt>
-                                    <dd class="fee">100원</dd>
-                                    <div class="item_btn">
-                                        <a class="resv_btn" href="#">
-                                            <span class="btn_icon resv_icon"></span>
-                                            <span class="btn_text resv_text">예약</span>
-                                        </a>
-                                        <a class="map_btn" href="#">
-                                            <span class="btn_icon map_icon"></span>
-                                            <span class="btn_text map_text">지도</span>
-                                        </a>
-                                    </div>
-                                </dl>
-                            </div>
-                        </li>
-                        <li class="list_item">
-                            <div class="img_box">
-                                <a href="#"><img src="#"></a>
-                            </div>
-                            <div class="item_box">
-                                <dl class="item_list">
-                                    <dt class="blind">전시회명</dt>
-                                    <dd class="title">
-                                        <a href="#">전시회8</a>
+                                        <a href="#">전시회2</a>
                                     </dd>
                                     <dt class="blind">기간</dt>
                                     <dd class="period">...~...</dd>
@@ -286,7 +236,7 @@
                                 <dl class="item_list">
                                     <dt class="blind">전시회명</dt>
                                     <dd class="title">
-                                        <a href="#">전시회9</a>
+                                        <a href="#">전시회1</a>
                                     </dd>
                                     <dt class="blind">기간</dt>
                                     <dd class="period">...~...</dd>
@@ -294,19 +244,50 @@
                                     <dd class="place">ㅇㅇ예술의전당</dd>
                                     <dt class="blind">요금</dt>
                                     <dd class="fee">100원</dd>
-                                    <div class="item_btn">
-                                        <a class="resv_btn" href="#">
-                                            <span class="btn_icon resv_icon"></span>
-                                            <span class="btn_text resv_text">예약</span>
-                                        </a>
-                                        <a class="map_btn" href="#">
-                                            <span class="btn_icon map_icon"></span>
-                                            <span class="btn_text map_text">지도</span>
-                                        </a>
-                                    </div>
                                 </dl>
+                                <div class="item_btn">
+                                    <a class="resv_btn" href="#">
+                                        <span class="btn_icon resv_icon"></span>
+                                        <span class="btn_text resv_text">예약</span>
+                                    </a>
+                                    <a class="map_btn" href="#">
+                                        <span class="btn_icon map_icon"></span>
+                                        <span class="btn_text map_text">지도</span>
+                                    </a>
+                                </div>
                             </div>
                         </li>
+                        <li class="list_item">
+                            <div class="img_box">
+                                <a href="#"><img src="example.jpg"></a>
+                            </div>
+                            <div class="item_box">
+                                <dl class="item_list">
+                                    <dt class="blind">전시회명</dt>
+                                    <dd class="title">
+                                        <a href="#">전시회2</a>
+                                    </dd>
+                                    <dt class="blind">기간</dt>
+                                    <dd class="period">...~...</dd>
+                                    <dt class="blind">장소</dt>
+                                    <dd class="place">ㅇㅇ예술의전당</dd>
+                                    <dt class="blind">요금</dt>
+                                    <dd class="fee">100원</dd>
+                                </dl>
+                                <div class="item_btn">
+                                    <a class="resv_btn" href="#">
+                                        <span class="btn_icon resv_icon"></span>
+                                        <span class="btn_text resv_text">예약</span>
+                                    </a>
+                                    <a class="map_btn" href="#">
+                                        <span class="btn_icon map_icon"></span>
+                                        <span class="btn_text map_text">지도</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list_group">
                         <li class="list_item">
                             <div class="img_box">
                                 <a href="#"><img src="#"></a>
@@ -315,7 +296,7 @@
                                 <dl class="item_list">
                                     <dt class="blind">전시회명</dt>
                                     <dd class="title">
-                                        <a href="#">전시회10</a>
+                                        <a href="#">전시회1</a>
                                     </dd>
                                     <dt class="blind">기간</dt>
                                     <dd class="period">...~...</dd>
@@ -323,17 +304,46 @@
                                     <dd class="place">ㅇㅇ예술의전당</dd>
                                     <dt class="blind">요금</dt>
                                     <dd class="fee">100원</dd>
-                                    <div class="item_btn">
-                                        <a class="resv_btn" href="#">
-                                            <span class="btn_icon resv_icon"></span>
-                                            <span class="btn_text resv_text">예약</span>
-                                        </a>
-                                        <a class="map_btn" href="#">
-                                            <span class="btn_icon map_icon"></span>
-                                            <span class="btn_text map_text">지도</span>
-                                        </a>
-                                    </div>
                                 </dl>
+                                <div class="item_btn">
+                                    <a class="resv_btn" href="#">
+                                        <span class="btn_icon resv_icon"></span>
+                                        <span class="btn_text resv_text">예약</span>
+                                    </a>
+                                    <a class="map_btn" href="#">
+                                        <span class="btn_icon map_icon"></span>
+                                        <span class="btn_text map_text">지도</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list_item">
+                            <div class="img_box">
+                                <a href="#"><img src="example.jpg"></a>
+                            </div>
+                            <div class="item_box">
+                                <dl class="item_list">
+                                    <dt class="blind">전시회명</dt>
+                                    <dd class="title">
+                                        <a href="#">전시회2</a>
+                                    </dd>
+                                    <dt class="blind">기간</dt>
+                                    <dd class="period">...~...</dd>
+                                    <dt class="blind">장소</dt>
+                                    <dd class="place">ㅇㅇ예술의전당</dd>
+                                    <dt class="blind">요금</dt>
+                                    <dd class="fee">100원</dd>
+                                </dl>
+                                <div class="item_btn">
+                                    <a class="resv_btn" href="#">
+                                        <span class="btn_icon resv_icon"></span>
+                                        <span class="btn_text resv_text">예약</span>
+                                    </a>
+                                    <a class="map_btn" href="#">
+                                        <span class="btn_icon map_icon"></span>
+                                        <span class="btn_text map_text">지도</span>
+                                    </a>
+                                </div>
                             </div>
                         </li>
                     </ul>
@@ -361,15 +371,11 @@
                     <div class="filter_body">
                         <div class="input_box">
                             <input type="text" title="검색기간 시작일" value="" class="input_txt" id="date_from">
-                            <a href="#" class="calendar" onclick="return tCR('a=fno.datecalenderopen');">
-                                달력 레이어 호출
-                            </a>
+                            <input type="text" title="검색기간 시작일 달력" value="" class="calendar" id="date_from_btn">
                         </div>
                         <div class="input_box">
                             <input type="text" title="검색기간 종료일" value="" class="input_txt" id="date_to">
-                            <a href="#" class="calendar" onclick="return tCR('a=fno.datecalenderopen');">
-                                달력 레이어 호출
-                            </a>
+                            <input type="text" title="검색기간 종료일 달력" value="" class="calendar" id="date_to_btn">
                         </div>
                         <a class="apply_btn"href="#">적용하기</a>
                     </div>
