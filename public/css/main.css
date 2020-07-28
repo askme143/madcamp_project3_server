@@ -26,7 +26,8 @@ li {
 }
 a {
     text-decoration:none;
-    color:#515151;
+	color:#515151;
+	font-family: 'InfinitySans-BoldA1';
 }
 
 /* header */
