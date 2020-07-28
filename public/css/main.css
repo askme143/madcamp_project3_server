@@ -96,8 +96,8 @@ header a:hover:not(:first-child) {
 .search img {
     padding-top: 4px;
     position: relative;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
 }
 
 .user {
@@ -209,11 +209,13 @@ header li a:hover {
 }
 
 main h2{
+	padding-top: 5px;
 	padding-left: 20px;
-	margin:20px 0;
+	margin:40px 20px 0 0;
+	padding-right: 30px;
 	font-family: 'CookieRun-Regular';
 }
-.p-1{
+.more{
 	padding-left: 10px;
 	text-decoration: none;
 	color: #000000;
@@ -221,7 +223,7 @@ main h2{
 }
 
 main{
-	padding-top: 20px;
+	padding-top: 10px;
 	max-width: 1170px;
 	margin-left: auto;
     margin-right: auto;
@@ -252,7 +254,7 @@ main{
 footer{
 	box-sizing: border-box;
 	margin: 50px 0 0;
-	padding: 40px;
+	padding: 30px;
 	width: 100%;
 
 	text-align: center;

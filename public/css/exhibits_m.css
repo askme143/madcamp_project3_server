@@ -23,18 +23,6 @@ a {
     color:#515151;
 }
 
-.hidden {
-    height:0;
-    width:0;
-    visibility:hidden;
-}
-
-.clear::before{
-    content:'';
-    display:block;
-    clear:both;
-}
-
 /* header */
 header{
     background-color: #444444;
@@ -57,7 +45,7 @@ header a {
     padding: 40px 40px 0 40px;
     box-sizing: border-box;
 
-    font-size:5rem;
+    font-size:5em;
     text-align: center;
 }
 #logo::after {
@@ -100,13 +88,16 @@ header a {
     margin: 20px 0 ;
 }
 .search input {
+    box-sizing: border-box;
+    border: 1px solid #C2C2C2;
+	border-right: none;
     width:80%;
     border-radius: 10px 0 0 10px;
     font-size:2rem;
 }
 .search button {
-    width: 4rem;
-	height: 5rem;
+    width: 4em;
+	height: 5em;
 	border: 1px solid #C2C2C2;
 	background: #C2C2C2;
 	text-align: center;
@@ -138,7 +129,7 @@ header a {
     background-color: #eeeeee;
 }
 .filter_title {
-    margin: 20px 10px 20px 20px;
+    margin: 20px 5px 20px 20px;
     font-size: 3em;
 }
 
@@ -182,8 +173,8 @@ header a {
     flex-grow: 1;
 }
 .date_filter .input_box {
-    width:30%;
-    margin: 0 10px;
+    width:35%;
+    margin: 0 15px;
     text-align: center;
 }
 .input_txt {
@@ -192,7 +183,6 @@ header a {
 .apply_btn {
     visibility: hidden;
     position: relative;
-    
 }
 .apply_btn:after {
     visibility: visible;
@@ -204,7 +194,7 @@ header a {
     padding: 0 10px;
     height: 50px;
     line-height: 50px;
-    text-align:center;
+    text-align: center;
     color: #eeeeee;
     background: #515151;
     content: "적용";
@@ -220,9 +210,19 @@ header a {
 }
 
 .calendar {
-    display:none;
+    position: relative;
+    top:-32px;
+    left: -15px;
+    float:right;
+    transform: scale(2.6);
+    width:17px;
+    height:17px;
+    display: block;
+    font-size:0;
+    background: url(../pngs/calendar.png);
+    background-position: -2px -73px;
+    border:none
 }
-
 /* Exhibition area */
 .exhibition_area {
     order: 3;
@@ -333,41 +333,43 @@ header a {
     display:flex;
     flex-flow: column wrap;
     justify-content: center;
-    width:100%;
+    width:  100%;
     height: 100%;
 }
 .item_btn a {
     display:flex;
     flex-flow:row nowrap;
     align-items: center;
-    margin: 5px 3%;
+    margin: 8px 3%;
+    /* margin-left: 10px; */
     
-    max-width: 100px;
-    width:40%;
-    height:40px;
+    max-width: 140px;
+    width:130%;
+    height:80px;
     border:1px solid #eeeeee;
     border-radius: 4px;
 }
 .btn_text {
     display: block;
     flex-grow: 1;
-    font-size: 1.2rem;
+    font-size: 1.8em;
     text-align: center;
     border-left: 1px solid #cccccc
 }
 .resv_icon {
     display:block;
-    margin:0 10% 0 5%;
+    margin:0 15% 0 15%;
 
     width:22px;
     height:22px;
+    transform: scale(2);
     background: url(../pngs/resv_icon.png);
     background-position: -340px -380px;
 }
 .map_icon {
     display:block;
-    margin:0 5% 0 5%;
-
+    margin:0 12% 0 12%;
+    transform: scale(1.9);
     width:22px;
     height:24px;
     background: url(../pngs/pin.png);
@@ -379,7 +381,7 @@ header a {
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-
+    transform: scale(1.8);
     margin: 20px 0;
 
     width: 100%;

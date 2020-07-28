@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>네이버 로그인</title>
-        <link rel="stylesheet" href="css/login.css">
+        <link media="only screen and (min-width : 1200px)" rel="stylesheet" type="text/css" href="css/login.css">
+        <link media="not screen and (min-width : 1200px)" rel="stylesheet" type="text/css" href="css/login_m.css">
         <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="javascripts/login.js"></script>
@@ -51,7 +52,7 @@
         <script type="text/javascript">
             var naver_id_login = new naver_id_login("Bp683DwJGRcqChEdMnCs", "http://192.249.19.244:1580/loginNaver.html");
             var state = naver_id_login.getUniqState();
-            naver_id_login.setButton("white", 2,40);
+            naver_id_login.setButton("white", 2, 85);
             naver_id_login.setDomain("http://192.249.19.244:1580/main.html");
             naver_id_login.setState(state);
             naver_id_login.setPopup();
