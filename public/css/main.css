@@ -94,7 +94,7 @@ header a:hover:not(:first-child) {
 	font-size: 20px;
 }
 .search img {
-    padding-top: 2px;
+    padding-top: 4px;
     position: relative;
     width: 24px;
     height: 24px;
