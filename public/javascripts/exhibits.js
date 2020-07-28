@@ -33,11 +33,6 @@ function requestExhibitsTotal(page) {
         const {total_page, exhibits_per_page, exhibits} = data;
         const len = exhibits.length;
 
-        console.log(titleList);
-        console.log(periodList);
-        console.log(imageBoxLinkList);
-        console.log(exhibitImageList);
-
         for (var i = 0; i < len; i++) {
             const exhibit = exhibits[i];
             
@@ -172,11 +167,21 @@ function showFilter() {
 
     $(function() {
         $(".calendar").datepicker({
-            // showOn: "both",
-            // buttonImage: "../pngs/calendar.png",
-            // buttonImageOnly: true
+            dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+            dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+            monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+            monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
         });
     });
+
+    const calendarBtnList = document.querySelectorAll('a.ui-state-default');
+    const calendarList = document.querySelectorAll('.calendar');
+    console.log(document);
+    
+    for (var i = 0; i < calendarList.length; i++) {
+        console.log("1");
+        calendarList[i].addEventListener('click', onClickCalendar);
+    }
 }
 
 /* Event listeners */
@@ -225,6 +230,9 @@ const onClickApply = (ev) => {
 
     requestExhibitsTotal(1);
 }
+const onClickCalendar = (ev) => {
+    ev.target.addEventListener('blur', onChangeCalendar);
+}
 const onInputDate = (ev) => {
     var str = ev.target.value.replace(/[^0-9]/g, '').substring(0, 8);
     console.log(str);
@@ -255,6 +263,26 @@ const onInputDate = (ev) => {
 
     ev.target.value = str;
 }
+const onChangeCalendar = (ev) => {
+    setTimeout(() => {
+        console.log("2");
+        const from = document.querySelector('#date_from_btn').value;
+        const to = document.querySelector('#date_to_btn').value;
+        console.log(from);
+        if (from.length != 0) {
+            const fromList = from.split('/');
+            const value = fromList[2]+ "." + fromList[0] + "." + fromList[1] + ".";
+            document.querySelector('#date_from').value = value;
+            console.log(document.querySelector('#date_from').value);
+        }
+        if (to.length != 0) {
+            const toList = to.split('/');
+            const value = toList[2] + "." + toList[0] + "." + toList[1] + ".";
+            document.querySelector('#date_to').value = value;
+            console.log(document.querySelector('#date_to').value);
+        }
+    }, 500);
+}
 
 /* helpers */
 function flushDate() {
@@ -264,8 +292,6 @@ function flushDate() {
     dateTo = "";
 }
 
-
-console.log(window.location.href.split('?'));
 if (window.location.href.split('?').length > 1) {
     var today = new Date();
     var today_year = today.getFullYear();

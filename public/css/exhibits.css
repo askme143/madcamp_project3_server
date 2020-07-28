@@ -12,32 +12,96 @@ html, body {
     font-size:100%;
     color:#515151;
 }
-
 li {
     list-style:none;
 }
-
 a {
     text-decoration:none;
     color:#515151;
 }
 
-.hidden {
-    height:0;
-    width:0;
-    visibility:hidden;
-}
-
-.clear::before{
-    content:'';
-    display:block;
-    clear:both;
-}
-
 /* header */
 header{
-	background-color: #444444;
+    background-color: #444444;
 }
+header a {
+    color:#C2C2C2;
+    font-size: 1.2rem;
+}
+header a:hover:not(:first-child) {
+    display:block;
+    box-sizing: border-box;
+    background-color: #6e7b8b;
+    background-clip: content-box;
+}
+.header_container {
+    margin:0 auto;
+    max-width:1400px;
+
+    display:flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+.logo{
+    order:1;
+    height: 100%;
+}
+.menu {
+    order: 2;
+    margin: 0 30px;
+    box-sizing: border-box;
+    width:30%;
+    flex-grow:1;
+}
+.search {
+    order: 3;
+    display:flex;
+    margin: 0 30px;
+    height:36px;
+    bottom: 4px;
+    justify-content: flex-end;
+}
+.search input {
+    box-sizing: border-box;
+    width: 100%;
+	border: 1px solid #C2C2C2;
+	border-right: none;
+	padding: 5px;
+	height: 36px;
+	border-radius: 5px 0 0 5px;
+	outline: none;
+	color: #C2C2C2;
+}
+.search button {
+	width: 40px;
+	height: 36px;
+	border: 1px solid #C2C2C2;
+	background: #C2C2C2;
+	text-align: center;
+	color: #fff;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	font-size: 20px;
+}
+.search img {
+    padding-top: 2px;
+    position: relative;
+    width: 24px;
+    height: 24px;
+}
+
+.user {
+    order: 4;
+    display:flex;
+    flex-flow: row nowrap;
+}
+.user a {
+    flex-grow:1;
+}
+.user img {
+    display:none;
+}
+
 header ul {
 	margin: 0;
 	padding: 0;
@@ -64,50 +128,6 @@ header ul li a {
 }
 header li a:hover {
 	background-color: #6e7b8b;
-}
-.search {
-	padding-top: 8px;
-    width: 100%;
-    height:36px;
-	position: relative;
-	display: flex;
-}
-.searchTerm {
-    box-sizing: border-box;
-	width: 100%;
-	border: 1px solid #C2C2C2;
-	border-right: none;
-	padding: 5px;
-	height: 36px;
-	border-radius: 5px 0 0 5px;
-	outline: none;
-	color: #C2C2C2;
-}
-.searchButton {
-	width: 40px;
-	height: 36px;
-	border: 1px solid #C2C2C2;
-	background: #C2C2C2;
-	text-align: center;
-	color: #fff;
-	border-radius: 0 5px 5px 0;
-	cursor: pointer;
-	font-size: 20px;
-}
-.real{
-    padding-top: 2px;
-    position: relative;
-    width: 24px;
-    height: 24px;
-}
-
-.header-bar {
-    max-width: 1600px;
-
-    display:flex;
-    flex-flow: row wrap;
-    justify-content: flex-end;
-    align-items: center;
 }
 
 /* navigation */
@@ -434,12 +454,11 @@ nav {
     width:17px;
     height:17px;
     display: block;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
     font-size:0;
     background: url(../pngs/calendar.png);
     background-position: -2px -73px;
+
+    border:none
 }
 .calendar:focus {
     outline:none;
