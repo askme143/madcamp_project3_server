@@ -28,8 +28,10 @@ const checkNaver = (req, res, next) => {
         console.log(document);
 
         if (document != null) {
+            req.session.logined = true;
+            req.session.email = email;
             res.statusCode = 200;
-            res.send("success");   
+            res.send("success");
         } else {
             res.statusCode = 200;
             res.send("fail");
@@ -69,7 +71,27 @@ const signupUser = (req, res, next) => {
     })
 }
 
+const loginCheck = (req, res, next) => {
+    if (req.session.logined) {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/plain');
+        res.send("success");
+    } else {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/plain');
+        res.send("failed");
+    }
+}
+
+const logout = (req, res, next) => {
+    req.session.destroy();
+
+    res.clearCookie('sid');
+}
+
 module.exports = {
     checkNaver,
-    signupUser
+    signupUser,
+    loginCheck,
+    logout
 }

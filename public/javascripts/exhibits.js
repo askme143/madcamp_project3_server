@@ -1,3 +1,5 @@
+// const { loginCheck } = require("../../api/user");
+
 var imageBoxLinkList = document.querySelectorAll(".img_box a");
 var exhibitImageList = document.querySelectorAll(".img_box img");
 var titleList = document.querySelectorAll(".title > a");
@@ -180,7 +182,6 @@ function showFilter() {
         });
     });
 
-    const calendarBtnList = document.querySelectorAll('a.ui-state-default');
     const calendarList = document.querySelectorAll('.calendar');
     console.log(document);
     
@@ -188,6 +189,54 @@ function showFilter() {
         console.log("1");
         calendarList[i].addEventListener('click', onClickCalendar);
     }
+}
+
+function loginCheck() {
+    $.get("/loginCheck", (data) => {
+        if (data == "success") {
+            var profileBtn = document.querySelector("#login_btn a");
+            var logoutBtn = document.querySelector("#signup_btn a");
+            const mobile = isMobile();
+
+            if (!mobile) {
+                profileBtn.innerHTML = "프로필";
+                profileBtn.setAttribute('href', "#");
+                logoutBtn.innerHTML = "로그아웃";
+            } else {
+                logoutBtn = profileBtn;
+            }
+
+            logoutBtn.setAttribute('href', "#");
+            logoutBtn.addEventListener('click', (ev) => {
+                const loginBtn = document.querySelector("#login_btn a");
+                const signupBtn = document.querySelector("#signup_btn a");
+                const mobile = isMobile();
+
+                loginBtn.setAttribute('href', "login.html");
+                if (!mobile) {
+                    loginBtn.innerHTML = "로그인";
+                    signupBtn.innerHTML = "회원가입";
+                }
+
+                $.get("/logout", (data) => {
+                    if (!mobile)
+                        signupBtn.setAttribute('href', "signup.html");
+                })
+            })
+        } else {
+            console.log(data);
+        }
+    })
+}
+function isMobile(){
+	var UserAgent = navigator.userAgent;
+
+    if (UserAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null
+     || UserAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 /* Event listeners */
@@ -307,7 +356,6 @@ function flushDate() {
 }
 
 searchBtn.addEventListener("click", onClickSearchButton);
-// console.log(window.location.href.split('?'));
 
 if (window.location.href.split('?').length > 1) {
     var today = new Date();
@@ -318,20 +366,14 @@ if (window.location.href.split('?').length > 1) {
         if (window.location.href.split('?')[1].split('=')[1] == "early") {
             early = (today_year*10000 + today_month*100 + today_day).toString();
             dateTo="";
-            requestExhibitsTotal(1);
-            showFilter();
         }else if (window.location.href.split('?')[1].split('=')[1] == "late") {
             early = "";
             late=(today_year*10000 + today_month*100 + today_day).toString();
-            requestExhibitsTotal(1);
-            showFilter();
         }
     } else if (window.location.href.split('?')[1].split('=')[0] == "name"){
         name = window.location.href.split('?')[1].split('=')[1];
-        requestExhibitsTotal(1);
-        showFilter();
     }
-} else {
-    requestExhibitsTotal(1);
-    showFilter(); 
 }
+requestExhibitsTotal(1);
+showFilter();
+loginCheck();
