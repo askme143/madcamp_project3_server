@@ -29,8 +29,11 @@ app.use(bodyParser.json());
 app.post('/exhibits/upload', apiDB.putExhibits);
 
 /* Exhibits page */
-app.get('/exhibits/earlybird', apiExhibits.getEarlyExhibits);
+
 app.get('/exhibits/total', apiExhibits.getExhibits);
+app.get('/exhibits/earlybird', apiExhibits.getEarlyExhibits)
+app.get('/exhibits/almostdone', apiExhibits.getEarlyExhibits)
+
 
 app.get('/loginNaver', apiUser.checkNaver);
 app.post('/signup', apiUser.signupUser);

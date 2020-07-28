@@ -1,6 +1,9 @@
 @font-face { font-family: 'BBTreeGB'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGB.woff') format('woff'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'BBTreeGR'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGR.woff') format('woff'); font-weight: normal; font-style: normal; }
 @font-face { font-family: 'BBTreeGL'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_nine_@1.1/BBTreeGL.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'InfinitySans-BoldA1'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/InfinitySans-BoldA1.woff') format('woff'); 
+    font-weight: normal; font-style: normal; }
 
 * {
     margin:0;
@@ -46,7 +49,7 @@ header ul {
 	max-width: 1600px;
 	margin-right: auto;
 	margin-left: auto;
-	font-family: 'BRBA_B';
+	font-family: 'InfinitySans-BoldA1';
 	font-size: large;
 }
 header ul li {
@@ -64,6 +67,12 @@ header ul li a {
 }
 header li a:hover {
 	background-color: #6e7b8b;
+}
+header img{
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    margin: 0;
 }
 .search {
 	padding-top: 8px;
@@ -98,17 +107,17 @@ header li a:hover {
     padding-top: 2px;
     position: relative;
     width: 24px;
-    height: 24px;
+    height: 2px;
 }
 
-.header-bar {
+/* .header-bar {
     max-width: 1600px;
 
     display:flex;
     flex-flow: row wrap;
     justify-content: flex-end;
     align-items: center;
-}
+} */
 
 /* navigation */
 nav {

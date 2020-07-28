@@ -27,6 +27,8 @@ const getExhibits = (req, res, next) => {
     var dateTo = req.query.date_to;
     var district = req.query.district;
     var early = req.query.early_date;
+    var late = req.query.late_date;
+    var name = req.query.search_name;
 
     const exhibitsCollection = db.db('prj3').collection("exhibits");
 
@@ -39,6 +41,10 @@ const getExhibits = (req, res, next) => {
         query['start_num'] = {"$gt":parseInt(early)};
         // query['finish_num'] = {"$gte":parseInt(dateFrom)};
     }
+    if (late.length > 0 ) {
+        query['finish_m'] = {"$eq":parseInt(late.substring(4,6))};
+        query['finish_num'] = {"$gte":parseInt(late)};
+    }
     if (dateFrom.length > 0) {
         query['start_num'] = {"$lte":parseInt(dateFrom)};
         query['finish_num'] = {"$gte":parseInt(dateFrom)};
@@ -46,6 +52,11 @@ const getExhibits = (req, res, next) => {
     if (dateTo.length > 0) {
         query['start_num'] = {"$lte":parseInt(dateTo)};
         query['finish_num'] = {"$gte":parseInt(dateTo)};
+    }
+    if(name.length>0){
+        query['title'] = {"$regex":name};
+        //  query = {"$or" : [ query['title'] = {"$regex":name}, 
+        // query['place'] = {"$regex":name} ] };
     }
     if (dateFrom.length > 0 && dateTo.length > 0) {
         var fromNum = parseInt(dateFrom);
@@ -85,17 +96,24 @@ const getExhibits = (req, res, next) => {
 const getEarlyExhibits = (req, res, next) => {
     /* TODO: Implement various sorting */
     console.log ("> Get early exhibits");
-    var dateFrom = req.query.date_from;
+    var early = req.query.early_date;
+    var late = req.query.late_date;
 
     const exhibitsCollection = db.db('prj3').collection("exhibits");
+
     var query = {}
-    if (dateFrom.length > 0) {
-        query['start_num'] = {"$lte":parseInt(dateFrom)};
-        query['finish_num'] = {"$gte":parseInt(dateFrom)};
+
+    if (early.length > 0) {
+        query['start_num'] = {"$gt":parseInt(early)};
+        // query['finish_num'] = {"$gte":parseInt(dateFrom)};
     }
-    if (dateFrom.length > 0) {
-        var fromNum = parseInt(dateFrom);
+    if (late.length > 0) {
+        query['finish_m'] = {"$eq":parseInt(late.substring(4,6))};
+        query['finish_num'] = {"$gte":parseInt(late)};
+
     }
+
+    console.log(query);
 
     // query['start_num'] = {"$lte":fromNum};
     const result = exhibitsCollection.find(query);

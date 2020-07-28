@@ -10,11 +10,15 @@ var mapBtnList = document.querySelectorAll(".map_btn");
 var listItemList = document.querySelectorAll('.list_item');
 var listGroupList = document.querySelectorAll('.list_group');
 
+var searchBtn = document.querySelector('.searchButton');
+
 var currentPage = 1;
 var district = "";
 var dateFrom = "";
 var dateTo = "";
 var early = "";
+var late = "";
+var name = "";
 var link="#";
 // var page = 1;
 
@@ -22,21 +26,25 @@ var totalPage;
 var exhibitsPerPage;
 
 const pagePerNav = 10;
-const naverSearchUrl = "https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&mra=bjBC&pkid=360&query=";
+var naverSearchUrl = "https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&mra=bjBC&pkid=360&query=";
 
 function requestExhibitsTotal(page) {
     $.getJSON("/exhibits/total?page=" + String(page)
                 + "&early_date=" + early
+                + "&late_date=" + late
+                + "&search_name=" + name
                 + "&district=" + district
                 + "&date_from=" + dateFrom
                 + "&date_to=" + dateTo, (data) => {
         const {total_page, exhibits_per_page, exhibits} = data;
         const len = exhibits.length;
 
-        console.log(titleList);
-        console.log(periodList);
-        console.log(imageBoxLinkList);
-        console.log(exhibitImageList);
+        // console.log(titleList);
+        // console.log(periodList);
+        // console.log(imageBoxLinkList);
+        // console.log(exhibitImageList);
+        console.log(searchBtn);
+        // console.log(searchName);
 
         for (var i = 0; i < len; i++) {
             const exhibit = exhibits[i];
@@ -182,6 +190,17 @@ const onClickNavButton = (ev) => {
     showNav (newPage);
     page = newPage;
 }
+
+const onClickSearchButton = (ev) => {
+    var search_name = document.querySelector(".searchTerm").value;
+    console.log("name                "+search_name);
+    var name_address = "http://192.249.19.245:3680/exhibits.html?name="
+    window.location.href = name_address + search_name;
+    // requestExhibitsTotal (1);
+    // showNav (1);
+    // page = 1;
+}
+
 const onClickDistrict = (ev) => {
     district = ev.target.getAttribute('data-district');
 
@@ -256,17 +275,30 @@ function flushDate() {
     dateTo = "";
 }
 
-
-console.log(window.location.href.split('?'));
+searchBtn.addEventListener("click", onClickSearchButton);
+// console.log(window.location.href.split('?'));
 if (window.location.href.split('?').length > 1) {
     var today = new Date();
     var today_year = today.getFullYear();
     var today_month = today.getMonth()+1;
     var today_day = today.getDate();
-    early = (today_year*10000 + today_month*100 + today_day).toString();
-    dateTo="";
-    requestExhibitsTotal(1);
-    showFilter();
+    if (window.location.href.split('?')[1].split('=')[0] == "order") {
+        if (window.location.href.split('?')[1].split('=')[1] == "early") {
+            early = (today_year*10000 + today_month*100 + today_day).toString();
+            dateTo="";
+            requestExhibitsTotal(1);
+            showFilter();
+        }else if (window.location.href.split('?')[1].split('=')[1] == "late") {
+            early = "";
+            late=(today_year*10000 + today_month*100 + today_day).toString();
+            requestExhibitsTotal(1);
+            showFilter();
+        }
+    } else if (window.location.href.split('?')[1].split('=')[0] == "name"){
+        name = window.location.href.split('?')[1].split('=')[1];
+        requestExhibitsTotal(1);
+        showFilter();
+    }
 } else {
     requestExhibitsTotal(1);
     showFilter(); 
