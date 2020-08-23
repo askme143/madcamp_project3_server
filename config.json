@@ -1,7 +1,7 @@
 {
 	"apps" : [{
 		"name" : "exhibits-in-korea",
-		"script" : "./app.js",
+		"script" : "./bin.js",
 		"env" : {
 			"NODE_ENV" : "development"
 		},
