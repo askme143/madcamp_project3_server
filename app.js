@@ -26,6 +26,38 @@ app.use(express.static('./public'))
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+/* Page access */
+app.get('/', (req, res, next) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(__dirname + "/public/main.html");
+})
+app.get('/exhibits', (req, res, next) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(__dirname + "/public/exhibits.html");
+})
+app.get('/login', (req, res, next) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(__dirname + "/public/login.html");
+})
+app.get('/login/naver', (req, res, next) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(__dirname + "/public/loginNaver.html");
+})
+app.get('/signup', (req, res, next) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(__dirname + "/public/signup.html");
+})
+app.get('/signup/naver', (req, res, next) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html");
+    res.sendFile(__dirname + "/public/signupNaver.html");
+})
+
 /* DB Upload */
 app.post('/exhibits/upload', apiDB.putExhibits);
 
@@ -45,7 +77,7 @@ app.use(session({
         maxAge: 24000 * 60 * 60
     }
 }))
-app.get('/loginNaver', apiUser.checkNaver);
+app.get('/login/naver/check', apiUser.checkNaver);
 app.post('/signup', apiUser.signupUser);
 app.get('/loginCheck', apiUser.loginCheck);
 app.get('/logout', apiUser.logout);

@@ -12,18 +12,18 @@
         <!-- Header -->
         <header>
             <div class="header_container">
-                <div id="logo"><a href="main.html">Home</a></div>
+                <div id="logo"><a href="/">Home</a></div>
                 <ul class="user">
                     <li id="login_btn" style="float: right">
-                        <a href="login.html">
+                        <a href="login">
                             <img src="pngs/user.png">
                             <span>로그인</span>
                         </a>
                     </li>
-                    <li id="signup_btn" style="float: right"><a href="signup.html">회원가입</a></li>
+                    <li id="signup_btn" style="float: right"><a href="signup">회원가입</a></li>
                 </ul>
                 <ul class="menu">
-                    <li><a href="exhibits.html">모든 전시 보기</a></li>
+                    <li><a href="exhibits">모든 전시 보기</a></li>
                 </ul>
                 <div class="search">
                     <input type="text" class="searchTerm" placeholder="  유미의 세포들">
@@ -52,7 +52,7 @@
         <main>
             <section class="table1">
                 <h2 class="order-by">곧 끝나는 전시
-                    <small><a class="more" href="http://192.249.19.245:3680/exhibits.html?order=late">더보기</a></small>
+                    <small><a class="more" href="http://13.125.47.50/exhibits?order=late">더보기</a></small>
                 </h2>
                 <div class="row-exhibition-block">
                     <div class="exhibition-box">
@@ -81,7 +81,7 @@
 
             <section class="table2">
                 <h2 class="order-by">시작 예정 전시
-                    <small><a class="more" href="http://192.249.19.245:3680/exhibits.html?order=early">더보기</a></small>
+                    <small><a class="more" href="http://13.125.47.50/exhibits?order=early">더보기</a></small>
                 </h2>
                 <div class="row-exhibition-block">
                     <div class="exhibition-box">
@@ -110,7 +110,7 @@
         </main>
         <script>
             var searchBtn = document.querySelector('.searchButton');
-            var name_address = "http://192.249.19.245:3680/exhibits.html?name="
+            var name_address = "http://13.125.47.50/exhibits?name="
             console.log(searchBtn);
             const onClickSearchButton = (ev) => {
                 var search_name = document.querySelector(".searchTerm").value;

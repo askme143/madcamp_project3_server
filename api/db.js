@@ -1,6 +1,6 @@
 var mongoClient = require('mongodb').MongoClient;
 
-const databaseURL = 'mongodb://13.125.224.141:27017'
+const databaseURL = 'mongodb://13.125.47.50:27017'
 var db;
 
 mongoClient.connect(databaseURL,

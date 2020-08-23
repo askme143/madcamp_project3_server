@@ -254,7 +254,7 @@ const onClickNavButton = (ev) => {
 const onClickSearchButton = (ev) => {
     var search_name = document.querySelector(".searchTerm").value;
     console.log("name                "+search_name);
-    var name_address = "http://192.249.19.245:3680/exhibits.html?name="
+    var name_address = "http://13.125.47.50/exhibits.html?name="
     window.location.href = name_address + search_name;
 }
 
