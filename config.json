@@ -1,0 +1,23 @@
+{
+	"apps" : [{
+		"name" : "exhibits-in-korea",
+		"script" : "./app.js",
+		"env" : {
+			"NODE_ENV" : "development"
+		},
+		"env_production" : {
+			"NODE_ENV" : "production"
+		}
+	}],
+	"deploy" : {
+		"production" : {
+			"user" : "ubuntu",
+			"host" : "13.125.47.50",
+			"ref" : "origin/master",
+			"repo" : "git@github.com:askme143/madcamp_project3_server.git",
+			"path" : "/home/www/exhibits-in-korea",
+			"post-deploy" : 
+				"npm install && sudo npm start && pm2 reload config.json"
+		}
+	}
+}
