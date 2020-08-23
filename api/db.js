@@ -1,6 +1,6 @@
 var mongoClient = require('mongodb').MongoClient;
 
-const databaseURL = 'mongodb://localhost:27017'
+const databaseURL = 'mongodb://13.125.224.141:27017'
 var db;
 
 mongoClient.connect(databaseURL,
@@ -21,7 +21,7 @@ const putExhibits = (req, res, next) => {
 
     const exhibit = req.body;
 
-    const exhibitsCollection = db.db('prj3').collection('exhibits')
+    const exhibitsCollection = db.db('exhibitsInKorea').collection('exhibits')
     
     exhibitsCollection.insertOne(exhibit, (err, result) => {})
     

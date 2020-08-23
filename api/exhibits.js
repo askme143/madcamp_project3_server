@@ -1,6 +1,6 @@
 var mongoClient = require('mongodb').MongoClient;
 
-const databaseURL = 'mongodb://localhost:27017'
+const databaseURL = 'mongodb://13.125.224.141:27017'
 var db;
 
 mongoClient.connect(databaseURL,
@@ -30,7 +30,7 @@ const getExhibits = (req, res, next) => {
     var late = req.query.late_date;
     var name = req.query.search_name;
 
-    const exhibitsCollection = db.db('prj3').collection("exhibits");
+    const exhibitsCollection = db.db('exhibitsInKorea').collection("exhibits");
 
     var query = {}
     
@@ -99,7 +99,7 @@ const getEarlyExhibits = (req, res, next) => {
     var early = req.query.early_date;
     var late = req.query.late_date;
 
-    const exhibitsCollection = db.db('prj3').collection("exhibits");
+    const exhibitsCollection = db.db('exhibitsInKorea').collection("exhibits");
 
     var query = {}
 

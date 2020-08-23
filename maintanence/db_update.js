@@ -1,5 +1,5 @@
 function updateExhibitsImage(db) {
-    const exhibitsCollection = db.db('prj3').collection('exhibits');
+    const exhibitsCollection = db.db('exhibitsInKorea').collection('exhibits');
 
     const result = exhibitsCollection.find();
 
@@ -21,7 +21,7 @@ function updateExhibitsImage(db) {
     });
 }
 function updateDateNum(db) {
-    const exhibitsCollection = db.db('prj3').collection('exhibits');
+    const exhibitsCollection = db.db('exhibitsInKorea').collection('exhibits');
 
     const result = exhibitsCollection.find();
 
@@ -47,7 +47,7 @@ function updateDateNum(db) {
 
 var mongoClient = require('mongodb').MongoClient;
 
-const databaseURL = 'mongodb://localhost:27017';
+const databaseURL = 'mongodb://13.125.224.141:27017';
 var db;
 
 mongoClient.connect(databaseURL,
@@ -65,7 +65,7 @@ mongoClient.connect(databaseURL,
 const updateDistrict = (req, res, next) => {
     const exhibit = req.body;
 
-    const exhibitsCollection = db.db('prj3').collection('exhibits')
+    const exhibitsCollection = db.db('exhibitsInKorea').collection('exhibits')
     
     exhibitsCollection.insertOne(exhibit, (err, result) => {
         if (err) {

@@ -1,6 +1,6 @@
 var mongoClient = require('mongodb').MongoClient;
 
-const databaseURL = 'mongodb://localhost:27017';
+const databaseURL = 'mongodb://13.125.224.141:27017';
 var db;
 
 mongoClient.connect(databaseURL,
@@ -21,7 +21,7 @@ const checkNaver = (req, res, next) => {
     const email = req.query.email;
     console.log(email);
     
-    var users = db.db('prj3').collection('users');
+    var users = db.db('exhibitsInKorea').collection('users');
     users.findOne({'email':email}, (error, document) => {
         if (error) throw error;
 
@@ -45,7 +45,7 @@ const signupUser = (req, res, next) => {
     const {email, password, name} = req.body;
     const user = {email, password, name};
 
-    var users = db.db('prj3').collection('users');
+    var users = db.db('exhibitsInKorea').collection('users');
     var result = users.find({'email': email});
 
     result.toArray((error, documents) => {
