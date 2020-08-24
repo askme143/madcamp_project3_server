@@ -11,9 +11,6 @@ const session = require('express-session');
 const apiExhibits = require('./api/exhibits');
 const apiUser = require('./api/user');
 
-/* Module for maintanence */
-const maintanence = require('./maintanence/db_update');
-
 /* Put functions in the middleware */
 /* logger */
 app.use(logger('dev'));
@@ -81,7 +78,5 @@ app.post('/signup', apiUser.signupUser);
 app.get('/loginCheck', apiUser.loginCheck);
 app.get('/logout', apiUser.logout);
 
-/* maintanence */
-app.post('/maintain', maintanence.updateDistrict)
 debug('> App initiated')
 module.exports = app;
