@@ -1,4 +1,4 @@
-const db = require('./db').getDB;
+const db = require('../private/db').getDB;
 
 const checkNaver = (req, res, next) => {
     console.log("> Checking user access");
