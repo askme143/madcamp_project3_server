@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 
 /* My modules(apis) */
-const apiDB = require('./api/db');
 const apiExhibits = require('./api/exhibits');
 const apiUser = require('./api/user');
 
@@ -59,7 +58,7 @@ app.get('/signup/naver', (req, res, next) => {
 })
 
 /* DB Upload */
-app.post('/exhibits/upload', apiDB.putExhibits);
+app.post('/exhibits/upload', apiExhibits.putExhibits);
 
 /* Exhibits page */
 app.get('/exhibits/total', apiExhibits.getExhibits);

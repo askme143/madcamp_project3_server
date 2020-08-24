@@ -1,19 +1,4 @@
-var mongoClient = require('mongodb').MongoClient;
-
-const databaseURL = 'mongodb://13.125.47.50:27017';
-var db;
-
-mongoClient.connect(databaseURL,
-    (error, database) => {
-        if (error) {
-            console.log('db connect error');
-            return;
-        }
-
-        console.log('db was connected : ' + databaseURL);
-        db = database;
-    }
-);
+const db = require('./db').getDB;
 
 const checkNaver = (req, res, next) => {
     console.log("> Checking user access");
@@ -21,7 +6,7 @@ const checkNaver = (req, res, next) => {
     const email = req.query.email;
     console.log(email);
     
-    var users = db.db('exhibitsInKorea').collection('users');
+    var users = db().db('exhibitsInKorea').collection('users');
     users.findOne({'email':email}, (error, document) => {
         if (error) throw error;
 
@@ -45,7 +30,7 @@ const signupUser = (req, res, next) => {
     const {email, password, name} = req.body;
     const user = {email, password, name};
 
-    var users = db.db('exhibitsInKorea').collection('users');
+    var users = db().db('exhibitsInKorea').collection('users');
     var result = users.find({'email': email});
 
     result.toArray((error, documents) => {

@@ -1,22 +1,19 @@
-var mongoClient = require('mongodb').MongoClient;
-
-const databaseURL = 'mongodb://13.125.47.50:27017'
-var db;
-
-mongoClient.connect(databaseURL,
-    (error, database) => {
-        if (error) {
-            console.log('db connection error');
-            console.log(error);
-            return;
-        }
-
-        console.log('db was connected : ' + databaseURL);
-        db = database;
-    }
-);
-
+const db = require('./db').getDB;
 const exhibitsPerPage = 10;
+
+const putExhibits = (req, res, next) => {
+    console.log ("> Put exhibits on DB");
+    console.log(req.body)
+
+    const exhibit = req.body;
+
+    const exhibitsCollection = db().db('exhibitsInKorea').collection('exhibits')
+    
+    exhibitsCollection.insertOne(exhibit, (err, result) => {})
+    
+    res.statusCode = 200;
+    res.send("success");
+}
 
 const getExhibits = (req, res, next) => {
     /* TODO: Implement various sorting */
@@ -30,7 +27,7 @@ const getExhibits = (req, res, next) => {
     var late = req.query.late_date;
     var name = req.query.search_name;
 
-    const exhibitsCollection = db.db('exhibitsInKorea').collection("exhibits");
+    const exhibitsCollection = db().db('exhibitsInKorea').collection("exhibits");
 
     var query = {}
     
@@ -99,7 +96,7 @@ const getEarlyExhibits = (req, res, next) => {
     var early = req.query.early_date;
     var late = req.query.late_date;
 
-    const exhibitsCollection = db.db('exhibitsInKorea').collection("exhibits");
+    const exhibitsCollection = db().db('exhibitsInKorea').collection("exhibits");
 
     var query = {}
 
@@ -129,5 +126,6 @@ const getEarlyExhibits = (req, res, next) => {
 
 module.exports = {
     getExhibits,
-    getEarlyExhibits
+    getEarlyExhibits,
+    putExhibits
 }
